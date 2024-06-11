@@ -1,0 +1,738 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+
+:root {
+    /* -----------------Inicio Declaracion variables colores ----------------- */
+
+                  /* ----------  Diseno Fecha/hora ---------- */
+
+    --border-radius-fecha: 10px;
+
+                 /* ----------  Diseno tabla ---------- */
+
+    --color-letra-table-row: rgb(10, 10, 10);
+    --color-botones-tabla:#242a2c;
+     
+    /* Diseno de letra bienvenida y filtrar por */
+
+    --color-letra-filtrar-bienvenida:#242a2c;
+
+                /* ----------  Diseno global ---------- */
+
+
+    --color-base: #242a2c;
+    --color-base2: rgba(132,139,200,0.18);
+    --shadow-global: 0 2rem 3rem var(--color-base2);
+    --color-background-containers: #fff;
+    --color-background: #e2e2e2; /* Color del background completo*/
+    --radius-global: 5px;
+
+                /* ----------  Diseno popup ---------- */
+
+    --color-background-button-popup: rgb(255, 106, 0, 0.6);
+    --color-popup-checkbox: #242a2c;
+
+    /* ----------  Diseno msj sql ---------- */
+
+    --color-background-mensaje-sql-exitoso: #38ac81;
+    --color-background-mensaje-sql-error: #c35252;
+    --color-letra-mensaje-sql-exitoso: #d5ddde;
+    --color-letra-mensaje-sql-error: #242a2c;
+
+
+
+    /* -----------------Fin Declaracion variables colores ----------------- */
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+    
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: Montserrat,sans-serif;
+    font-size: 0.88rem;
+    margin: 0;
+    background: var(--color-background);
+    user-select: none;
+    overflow-x: hidden;
+}
+
+
+button{
+    background-color: transparent;          /* Para que todos los botones tengan background transparente*/
+}
+
+
+
+
+
+.container{
+    display:grid;
+    width:96%;
+    margin:0 auto;
+    
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 17rem;  /* tamano de : aside or side section  /  center section / right section*/
+}
+
+
+
+
+a {
+    color: var(--color-base);
+}
+
+
+img{
+    display:block;
+    width: 100%;
+}
+
+
+/*-------------------------- Inicio Font Titulos ------------------------------*/
+
+
+h1{
+    font-weight: 800;
+    font-size: 15px;
+}
+
+h2 {
+    color: var(--color-base);
+    font-size: 25px;
+}
+
+h3 {
+    font-size: 15px;
+    display:flex;    /*titulos del sidebar*/
+    
+}
+
+
+
+span {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/*--------------------------Fin Font Titulos ------------------------------*/
+
+
+
+
+p{
+    color:var(--color-letra-filtrar-bienvenida);
+}
+
+
+
+aside{   
+    height: 100vh;
+    margin:0;
+}
+
+ aside .top {
+        
+        display: flex;
+        align-items:center;
+        justify-content: space-between;
+        margin-top: 1.4rem;
+
+}
+
+ aside .logo{
+     display: flex;
+     gap:0.8rem;
+ }
+
+
+ aside .logo img {
+     width: 100%;
+     height:100%;
+     padding:2%;
+ }
+
+
+
+/* ---------------- Side bar a la izquierda ----------------  */
+
+aside h3 {
+        font-weight: 500;
+}
+
+    aside .sidebar a {
+        display: flex;
+        
+        margin-left: 2rem;
+        gap: 1rem;
+        align-items: center;
+        position: relative;
+        height: 3.7rem;
+        
+    }
+
+        aside .sidebar a span {
+            font-size: 1.6rem;
+            
+        }
+
+        aside .sidebar a.active {
+            background: var(--color-base2);
+            color: var(--color-base);
+            margin-left: 0;
+        }
+
+    aside .sidebar {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 86vh;
+        top: 3rem;
+        transition: all 10ms ease;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+/* --------------------- Color del side bar global --------------------- */
+
+.sidebar-global {
+    background: var(--color-background-containers);
+    border-radius: var(--radius-global);
+    box-shadow: var(--shadow-global);
+    margin-top: 1.4rem;
+}
+
+
+/* -------------------- Inicio Poner el ultimo li (cerrar sesion) al bottom------------------- */
+
+    aside .sidebar .last-link {
+        position: absolute;
+        bottom: 2rem;
+        width: 100%;
+        
+    }
+
+    /* -------------------- Fin Poner el ultimo a al bottom-------------------*/
+
+
+    /* -------------------- Inicio hover de cada a dentro del sidebar-------------------*/
+
+
+aside .sidebar a {
+    color: var(--color-base); /*color letras del sidebar */
+    margin-left: 0;
+}
+
+    aside .sidebar a:hover {
+        content: "";
+        width: 6px;
+        background: var(--color-base); /*color linea izquierda sidebar */
+        background: #97d700;
+    }
+
+
+aside .sidebar a:hover span {
+    margin-left: 1rem;
+}
+
+/* ---------------- Inicio esconder / desplegar links de administrar y reportes*/
+
+
+.item .sub-menu {
+    display: none;
+    
+}
+
+.item:hover .sub-menu{
+    display: block;
+    color: white;
+    
+}
+
+
+.sub-menu .item {
+    padding-left: 6px;
+    
+}
+
+
+
+/* ---------------- Fin esconder / desplegar links de administrar y reportes*/
+
+
+/* -------------------- Fin active de cada a dentro del sidebar-------------------*/
+
+
+
+
+/* -------------------- Inicio Main,centro pagina-------------------*/
+
+main{
+    margin-top: 1.4rem;
+    
+}
+
+
+main .date{
+    display: inline-block;
+    
+    border-radius: var(--border-radius-fecha);
+    margin-top: 1rem;
+    padding:0.5rem 0.2rem;
+    text-align: center;
+}
+
+main .date p{
+color: var(--color-base);
+font-weight: 500;
+font-size:13px;
+background: var(--color-background-containers);
+border-radius: var(--radius-global);
+box-shadow: var(--shadow-global);
+padding: 10%;
+
+}
+
+
+
+
+
+/*  ---------------------- Inicio diseno iconos exportar y agregar ------------------  */
+
+.agregar-exportar-iconos {
+    display: inline-flex;
+    margin-bottom: 10px;
+    background: var(--color-background-containers);
+    border-radius: var(--radius-global);
+    box-shadow: var(--shadow-global);
+    padding: 1%;
+    float: right;
+    gap: 10px; /* Espacio ente cada elemento*/
+    margin-right: 5px;
+}
+
+.agregar-exportar-iconos button , .agregar-exportar-iconos a{
+    
+    padding: 5px;
+}
+
+
+.material-symbols-outlined {
+    display: grid;
+}
+
+
+
+.agregar-exportar-iconos a:hover, .agregar-exportar-iconos button:hover {
+    background: linear-gradient(to right, #e2e2e2, #e2e2e2);
+    border-radius: 13px;
+}
+
+/*  ---------------------- Inicio diseno mensaje sql ------------------  */
+
+
+.mensaje-sql-exitoso {
+    display: inline-flex;
+    margin-bottom: 25px;
+    background: var(--color-background-mensaje-sql-exitoso);
+    color: var(--color-letra-mensaje-sql-exitoso);
+    border-radius: var(--radius-global);
+    box-shadow: var(--shadow-global);
+    padding: 1%;
+    gap: 10px; /* Espacio ente cada elemento*/
+    justify-content: center;
+    align-items: center;
+    margin-left: 12%;
+    margin-top: 25px;
+}
+
+
+.mensaje-sql-error {
+    display: inline-flex;
+    margin-bottom: 25px;
+    background: var(--color-background-mensaje-sql-error);
+    color: var(--color-letra-mensaje-sql-error);
+    border-radius: var(--radius-global);
+    box-shadow: var(--shadow-global);
+    padding: 1%;
+    gap: 10px; /* Espacio entre cada elemento*/
+    justify-content: center;
+    align-items: center;
+    margin-left: 12%;
+    margin-top: 2%;
+}
+
+
+
+
+
+/*  ---------------------- Inicio diseno mensaje sql ------------------  */
+
+
+
+/*  ---------------------- Inicio diseno filtrar tabla ------------------  */
+
+.filtros{
+    display: flex;
+    gap: 4px;
+}
+
+.filtrar1, .filtrar2 {
+    display: flex;
+    background: var(--color-background-containers);
+    border-radius: var(--radius-global);
+    box-shadow: var(--shadow-global);
+    width: 37%;
+    height: 50px;
+    padding: 1%;
+   
+}
+
+.filtrar1 input , .filtrar2 input{
+    width:70%;
+    height:50%;
+    border-bottom: solid 2px;
+    background-color:transparent;
+    
+}
+
+
+.btn-filtrar {
+    background: #fff;
+    border-radius: var(--radius-global);
+    text-align: left;
+    display: flex;
+   cursor: pointer;
+    height: 50px;
+    padding-top:13px;
+    padding-left:11px;
+}
+
+
+
+/*  ---------------------- Fin diseno filtrar tabla ------------------  */
+
+
+/*  ---------------------- Fin diseno iconos exportar y agregar ------------------  */
+
+
+.tabla-centro {
+    margin-top: 2%;
+    color: var(--color-base);
+    text-align: center;
+}
+
+
+
+
+/* ----------------------- Inicio estilo de la tabla ----------------------- */
+main .tabla {
+    margin-top: 2rem;
+}
+
+    main .tabla tbody tr:hover {
+        background: linear-gradient(to right, #e2e2e2, #e2e2e2);
+        color: white;
+    }
+
+
+main .tabla table{
+    background:var(--color-background-containers);
+    width:100%;
+    border-radius:var(--radius-global);
+    padding: 25px;
+    text-align:center;
+    box-shadow: var(--shadow-global);
+    transition:all 300ms ease;
+}
+
+main .tabla table:hover{
+    box-shadow:none;
+
+}
+
+
+main table tbody td {
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-base2); /* linea de abajo de cada fila*/
+    color: var(--color-letra-table-row);
+    
+}
+
+main table tbody td button {
+    color: var(--color-botones-tabla);
+}
+
+
+main .tabla tbody tr:last-child td {
+    border:none;                                      /*quita la linea de abajo del ultimo registro de la tabla*/
+}
+
+
+
+main .tabla a {
+    text-align: center;
+    display: block;
+    margin: 1px;
+    color: var(--color-base);
+}
+
+
+/* ----------------------- Fin estilo de la tabla ----------------------- */
+
+
+/* -------------------- Fin Main,centro pagina-------------------*/
+
+
+/* ----------------------- Inicio top derecha----------------------- */
+
+.right{
+    margin-top:1.4rem;
+    
+}
+
+.right .top {
+    background:var(--color-background-containers);
+    width:100%;
+    border-radius:var(--radius-global);
+    padding: 17px 25px;
+    text-align:center;
+    box-shadow: var(--shadow-global);
+}
+
+.right .top .perfil{
+    display: flex;
+    gap: 2rem;
+    text-align:right;
+    font-size: 17px;
+}
+
+
+
+
+/* ----------------------- Fin top derecha----------------------- */
+
+
+
+/* ----------------------- Inicio popup edit ----------------------- */
+
+
+/*  ---------------------- Inicio Instrucciones ------------------  */
+
+
+.instrucciones {
+    position:relative;
+    background: var(--color-background-containers);
+    border-radius: 5px 0px 0px 5px;
+    width:400px;
+    text-align: left;
+    height: 100%;
+    padding: 2%;
+    border-right:solid 3px;
+    border-color:var(--color-base);
+   justify-content:center;
+   align-items: center;
+}
+
+
+
+.instrucciones img {
+    padding: 10%;
+}
+
+
+
+
+
+
+
+/*  ---------------------- Fin Instrucciones ------------------  */
+
+
+
+/*  ---------------------- Inicio popup container global------------------  */
+
+.show-popup-agregar, .show-popup-editar, .show-popup-eliminar {
+    cursor: pointer;
+}
+
+.popup-container-agregar, .popup-container-editar, .popup-container-eliminar {
+    position: absolute;
+    width: 70%; /*width para el form */
+    height: 70%; /*height para el form */
+
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    margin-left: 10%;
+    margin-right: 23rem;
+    margin-top: 4%;
+    display: flex;
+    padding: 0;
+}
+
+    .popup-container-agregar button, .popup-container-editar button, .popup-container-eliminar button {
+        color: black;
+        font-size: 12px;
+        padding: 10px 45px; /*Configuracion global button dentro del popup container global*/
+        background: var(--color-background-button-popup);
+        border-radius: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 10px;
+        margin-left: 20%;
+        cursor: pointer;
+    }
+
+
+
+    .popup-container-agregar.active, .popup-container-editar.active, .popup-container-eliminar.active {
+        opacity: 1;
+        pointer-events: auto;
+        transition: .4s ease;
+    }
+
+
+.boton-popup{
+    cursor: pointer;
+}
+
+
+/*  ---------------------- Fin popup container global------------------  */
+/* ------------------------------------ Inicio formulario  ------------------------------------ */
+.popup-agregar, .popup-editar, .popup-eliminar {
+    padding: 3%; /*Espacio borde de arriba/abajo, izquierda/derecha*/
+    background: #fff;
+    border-radius: 0px 5px 5px 0px;
+    
+    text-align: left;
+    display: flex;
+    width: 400px;
+    height: 100%;
+}
+
+
+
+.form-group {
+    position: relative;
+    width: 300px;
+    height: auto;
+    margin-bottom: 30px; /*espacio entre cada Li*/
+    align-items: center;
+    left: 4%;
+    right: 4%;
+    bottom: 15px;
+    font-size: 13px;
+
+    
+}
+
+    .form-group input, .form-group select {
+        width: 50%;
+        height: auto;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid rgb(10, 10, 10); /* Lineas del borde */
+        font-size: 13px;
+        margin-left: 25px;
+        float: right;
+    }
+
+
+
+
+    .form-group button {
+        width: 70%;
+        height: 40px;
+        background: #ffffff;
+        border: none;
+        outline: none;
+        border-radius: 40px; /* Borde redondeado,que tanto se quiere */
+        box-shadow: rgb(255, 255, 255) 0px 7px 29px 0px;
+        font-size: 26px;
+        
+        font-weight: 1000;
+        margin-left: 25%;
+        cursor: pointer;
+    }
+
+.boton-agregar:hover{
+    color:#97d700;
+}
+
+
+
+.titulo {
+    font-size: 20px;
+    text-align: center;
+    color: var(--color-base);
+}
+
+
+
+.form-control {
+    text-align: center;
+}
+
+.checkboxes  {
+    gap: 17px;
+    
+}
+
+#Admine1, #Mante2, #usuarioe3, #Adminel1, #Mantel2, #usuarioel3, #Admin1, #Mant2, #usuario3 {
+    accent-color: var(--color-popup-checkbox);
+}
+
+
+
+/* -----------------------  Inicio diseno radio button  --------------------------------------*/
+
+
+
+/* --------------- Inicio Diseno del container radio button global --------------- */
+.Role , .Rolee , .Rolel {
+    display: block;
+    position: relative;
+    
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    
+    user-select: none;
+    color: var(--color-base);
+}
+
+
+
+/* -----------------------  Fin diseno radio button  --------------------------------------*/
+
+
+/* ------------------------------------ Fin formulario  ------------------------------------ */
+
+
+
+
+/* ----------------------- Fin popup edit ----------------------- */
+
+
+
+
+
+

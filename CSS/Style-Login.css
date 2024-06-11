@@ -1,0 +1,466 @@
+﻿
+/*
+    Librerias
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+
+/*
+    Inicio css
+*/
+
+
+:root {
+    /* -----------------Inicio Declaracion variables colores ----------------- */
+
+    --Color-background-error: #cf3d3d;
+    --Color-letra-error: #fff;
+}
+ 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #e2e2e2, #242a2c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+/*
+    -----------------------------------------------Inicio diseno container global -----------------------------------------------
+*/
+
+
+.container {
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 900px;
+    max-width: 100%;
+    min-height: 600px;
+    text-align: center;
+}
+
+    .container p {
+        font-size: 17px;
+        line-height: 20px;
+        letter-spacing: 0.3px;
+        margin: 20px 0;
+        text-align:center;
+    }
+
+    .container span {
+        font-size: 12px;
+    }
+
+
+
+
+    /*
+    -----------------------------------------------Inicio diseno global botones form-----------------------------------------------
+*/
+
+    .container button {
+        color: black;
+        font-size: 12px;
+        padding: 10px 45px;
+        border: 1px solid rgb(255, 106, 0, 0.3); /* Lineas del borde */
+        border-radius: 8px;
+        font-weight: 600;
+        
+        text-transform: uppercase;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+        /*
+    -----------------------------------------------Fin diseno global botones form-----------------------------------------------
+*/
+
+
+        /*
+    -----------------------------------------------Inicio diseno global botones toggle-----------------------------------------------
+*/
+
+        .container button.btn-iniciar-sesion {
+            border: 1px solid #97d700; /* Lineas del borde */
+        }
+
+        .container button.btn-salir {
+            border: 1px solid #97d700; /* Lineas del borde */
+        }
+
+    /*
+    -----------------------------------------------Fin diseno global botones toggle-----------------------------------------------
+*/
+
+
+    /*
+    -----------------------------------------------Inicio diseno global Forms de inicio de sesion y bienvenidos-----------------------------------------------
+*/
+
+
+    .container form {
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 1px 40px;
+        height: 100%;
+        
+    }
+
+
+    /*
+    -----------------------------------------------Fin diseno global Forms de inicio de sesion y bienvenidos-----------------------------------------------
+*/
+
+
+    /*
+    -----------------------------------------------Inicio diseno Input para iniciar sesion-----------------------------------------------
+*/
+
+.form-group input {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border: 1px solid rgb(0, 0, 0, .1); /* Lineas del borde */
+    
+    border-radius: 5px; /* Borde redondeado,que tanto se quiere */
+    font-size: 16px;
+    color: black;
+}
+
+/*
+    -----------------------------------------------Fin diseno Input para iniciar sesion-----------------------------------------------
+*/
+
+
+
+
+/*
+    -----------------------------------------------Fin diseno container global -----------------------------------------------
+*/
+
+
+
+
+/*
+    -----------------------------------------------Inicio form container global para Iniciar sesion y bienvenidos Principal-----------------------------------------------
+*/
+
+
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+    
+}
+
+/*
+    -----------------------------------------------Fin form container global para Iniciar sesion y bienvenidos Principal-----------------------------------------------
+*/
+
+
+
+
+/*
+    -----------------------------------------------Inicio diseno form-container bienvenidos -----------------------------------------------
+*/
+
+.bienvenidos {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+    bottom: 1%
+}
+
+.container.active .bienvenidos {
+    transform: translateX(100%);
+}
+
+
+/*
+    -----------------------------------------------Inicio diseno form-container iniciar-sesion -----------------------------------------------
+*/
+
+
+
+.iniciar-sesion {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+    top:0%
+}
+
+.container.active .iniciar-sesion {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+
+/* ------------- Inicio mensaje error al hacer login --------------- */
+
+.errorLogin {
+    position: relative;
+    width: 250px;
+    height: 40px;
+    margin-bottom:30px;
+    color: var(--Color-letra-error);
+    background-color: var(--Color-background-error);
+    font-size: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    
+}
+
+.errorLogin h3 {
+    padding: 10px 5px;
+
+}
+
+/* ------------- Inicio mensaje error al hacer login --------------- */
+
+
+
+
+/*
+    -----------------------------------------------Fin diseno form-container iniciar-sesion -----------------------------------------------
+*/
+
+
+@keyframes move {
+    0%, 49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+
+/*
+    -----------------------------------------------Inicio diseno Iconos redes sociales-----------------------------------------------
+*/
+.icons-sociales {
+  
+    position: absolute;
+    bottom: 1%;
+    left:40%;
+    color: #ffffff; /*color global para texto,iconos */
+    width: 2%;
+    align-items: center;
+    justify-content: center;
+   display:flex;
+
+}
+
+
+
+
+.a-iconos {
+    width: 200px;
+    font-size: 1px; /*tamano de los iconos*/
+    color: black;
+    
+    margin: 50px;
+    font-size: 20px;
+}
+
+    .a-iconos i {
+        transition: all 0.3s;
+    }
+
+    .a-iconos:hover {
+        font-size: 30px; /* Icono aumenta tamano al hover*/
+        color: #97d700; /* Icono cambia color al hover*/
+    }
+
+
+/*
+    -----------------------------------------------Fin diseno Iconos redes sociales-----------------------------------------------
+*/
+
+.toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;                                           /* Configuracion antes del toggle*/
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 150px 150px 150px;
+    z-index: 1000;
+}
+
+.container.active .toggle-container {
+    transform: translateX(-100%);
+    border-radius: 150px 150px 150px 150px;              /* Configuracion despues del toggle*/
+}
+
+.toggle {
+    
+    height: 100%;
+    background: linear-gradient(to right, #242a2c, #e2e2e2);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container.active .toggle {
+    transform: translateX(50%);
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+
+}
+
+/*
+    -----------------------------------------------Inicio diseno Toggle bienvenidos Salir-----------------------------------------------
+*/
+
+
+.toggle-bienvenidos-salir {
+    transform: translateX(-200%);
+}
+
+.container.active .toggle-bienvenidos-salir {
+    transform: translateX(0);
+}
+
+/*
+    -----------------------------------------------Fin diseno Toggle bienvenidos Salir-----------------------------------------------
+*/
+
+
+
+/*
+    -----------------------------------------------Inicio diseno Toggle bienvenidos Iniciar Sesion-----------------------------------------------
+*/
+
+.toggle-bienvenidos-iniciar-sesion {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.active .toggle-bienvenidos-iniciar-sesion {
+    transform: translateX(200%);
+}
+
+/*
+    -----------------------------------------------Fin diseno Toggle bienvenidos Iniciar Sesion-----------------------------------------------
+*/
+
+
+
+.boton {
+    color: black;
+    font-size: 12px;
+    padding: 10px 45px;
+    
+    border-radius: 8px;
+    font-weight: 600;
+    
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .boton:hover { /* Funcionalidad hover para cambiar el color al pasar el cursor por el boton*/
+        background-color: #97d700;
+        color: white;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+.form-group input::placeholder { /* texto dentro de los inputs*/
+    color: black;
+    text-align: center;
+}
+
+
+.form-group {
+    position: relative;
+    width: auto;
+    height: 30px;
+    margin: 5px 0; /* Margen que va a tener entre cada form-group */
+    color: white;
+
+}
+
+   
+
+
+    .form-group i { /* diseno para los iconos que estan dentro del form-group*/
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        transform: translateY(-50%);
+        font-size: 20px;
+    }
+
+
+
+
+.login-titulo {
+    font-size: 30px;
+    text-align: center;
+    color: #242a2c;
+    padding: 2px 2px;
+    width: 100%;
+}
+
+
+.image-logo {
+    position: absolute;
+    top: 4%;
+   
+}
+
+
