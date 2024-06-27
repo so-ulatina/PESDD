@@ -1,7 +1,7 @@
-﻿<Project Sdk="Devsense.Php.Sdk">
+<Project Sdk="Devsense.Php.Sdk">
   <PropertyGroup Label="Globals">
     <ProjectGuid>6e20207c-8215-4c08-9744-9e86add1b224</ProjectGuid>
-    <SpecificPageValue>Paginas/AdministrarDocente.php</SpecificPageValue>
+    <SpecificPageValue>Paginas/AdministrarUsuarios.php</SpecificPageValue>
     <StartAction>SpecificPage</StartAction>
   </PropertyGroup>
   <ItemGroup>
