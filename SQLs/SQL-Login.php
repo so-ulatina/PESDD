@@ -17,7 +17,7 @@ if (isset($_POST["login"])) { // Se agrega submit para que asi cumpla la funcion
 
     // Declaracion variables para validacion de usuario en la base de datos 
 
-    $sql = "SELECT * FROM usuarios WHERE Correo = '$correo'";
+    $sql = "SELECT * FROM usuarios WHERE Correo = '$correo' and Estado = 'Activo'";
     $resultado = mysqli_query($conn, $sql);
     $usuario = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 
@@ -41,20 +41,20 @@ if (isset($_POST["login"])) { // Se agrega submit para que asi cumpla la funcion
             // si el usuario ya hizo login,redireccionarlo al indice,sino redireccionarlo a login con un error
 
 
-            if ($usuario["Role_Admin"]) {
+            if ($usuario["Rol"]== "Administrador") {
 
-                $_SESSION["Role"] = "Admin"; 
+                $_SESSION["Rol"] = "Administrador"; 
                 header("Location: ../Paginas/IndiceAdmin.php");
                 die();
 
-            }else if ($usuario["Role_Mant"]) {
-                $_SESSION["Role"] = "Mant" ;
+            }else if ($usuario["Rol"] == "Mantenimiento") {
+                $_SESSION["Rol"] = "Mantenimiento" ;
                 header("Location: ../Paginas/IndiceMant.php");
                 die();
 
             }else {
-                $_SESSION["Role"] = "Usuario";
-                header("Location: ../Paginas/IndiceUsuario.php");
+                $_SESSION["Rol"] = "Consultor";
+                header("Location: ../Paginas/IndiceConsultor.php");
                 die();
             }
 
@@ -68,7 +68,7 @@ if (isset($_POST["login"])) { // Se agrega submit para que asi cumpla la funcion
 
         }
     } else {
-        $_SESSION['Error'] = "<div class='errorLogin'> <h3>Correo incorrecto</h3></div>";
+        $_SESSION['Error'] = "<div class='errorLogin'id= 'error'> <h3>Correo incorrecto o Usuario Inactivo</h3></div>";
         header("Location: ../Paginas/Login.php");
 
 
