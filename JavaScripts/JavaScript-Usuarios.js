@@ -1,4 +1,4 @@
-﻿
+
 
 let allButtons = document.getElementsByClassName('boton-popup');
     
@@ -26,9 +26,8 @@ for (let button of allButtons) {
                 let Apellido2 = tr.getElementsByClassName("Apellido2")[0].innerHTML;
                 let Password = tr.getElementsByClassName("Password")[0].innerHTML;
                 let Correo = tr.getElementsByClassName("Correo")[0].innerHTML;
-                let Admine1 = tr.getElementsByClassName("Role_Admin")[0].innerHTML;
-                let Mante2 = tr.getElementsByClassName("Role_Mant")[0].innerHTML;
-                let usuarioe3 = tr.getElementsByClassName("Role_Usuario")[0].innerHTML;
+                let Role = tr.getElementsByClassName("Rol")[0].innerHTML;
+                let estado = tr.getElementsByClassName("Estado")[0].innerHTML;
 
                 // inicializar popup en ventana
 
@@ -46,17 +45,9 @@ for (let button of allButtons) {
                 document.getElementById("Apellido2e").value = Apellido2.trim();
                 document.getElementById("Passworde").value = Password.trim();
                 document.getElementById("Correoe").value = Correo.trim();
-
-                if (Admine1 == '  X ') {
-                    document.getElementById("Admine1").checked = true;
-                } else { document.getElementById("Admine1").checked = false; }
-                if (Mante2 == '  X ') {
-                    document.getElementById("Mante2").checked = true;
-                } else { document.getElementById("Mante2").checked = false }
-                if (usuarioe3 == '  X ') {
-                    document.getElementById("usuarioe3").checked = true;
-                } else { document.getElementById("usuarioe3").checked = false; }
-
+                document.getElementById("Estadoe").value = estado.trim();
+                document.getElementById("Role").value = Role.trim();
+                document.getElementById("Id_Usuarioe").readOnly = true;
 
             }
 
@@ -77,10 +68,8 @@ for (let button of allButtons) {
                 let Apellido2 = tr.getElementsByClassName("Apellido2")[0].innerHTML;
                 let Password = tr.getElementsByClassName("Password")[0].innerHTML;
                 let Correo = tr.getElementsByClassName("Correo")[0].innerHTML;
-                let Adminel1 = tr.getElementsByClassName("Role_Admin")[0].innerHTML;
-                let Mantel2 = tr.getElementsByClassName("Role_Mant")[0].innerHTML;
-                let usuarioel3 = tr.getElementsByClassName("Role_Usuario")[0].innerHTML;
-
+                let Role = tr.getElementsByClassName("Rol")[0].innerHTML;
+                let estado = tr.getElementsByClassName("Estado")[0].innerHTML;
                 // inicializar popup en ventana
 
                 $popupContainer = document.querySelector('.popup-container-eliminar');
@@ -97,16 +86,8 @@ for (let button of allButtons) {
                 document.getElementById("Apellido2el").value = Apellido2.trim();
                 document.getElementById("Passwordel").value = Password.trim();
                 document.getElementById("Correoel").value = Correo.trim();
-
-                if (Adminel1 == '  X ') {
-                    document.getElementById("Adminel1").checked = true;
-                } else { document.getElementById("Adminel1").checked = false; }
-                if (Mantel2 == '  X ') {
-                    document.getElementById("Mantel2").checked = true;
-                } else { document.getElementById("Mantel2").checked = false }
-                if (usuarioel3 == '  X ') {
-                    document.getElementById("usuarioel3").checked = true;
-                } else { document.getElementById("usuarioel3").checked = false; }
+                document.getElementById("Estadoel").value = estado.trim();
+                document.getElementById("Rolel").value = Role.trim();
 
             }
 
@@ -120,12 +101,8 @@ for (let button of allButtons) {
             document.getElementById("Apellido2el").readOnly = true;
             document.getElementById("Passwordel").readOnly = true;
             document.getElementById("Correoel").readOnly = true;
-
-              
-            document.getElementById("Adminel1").readOnly = true;
-            document.getElementById("Mantel2").readOnly = true;
-            document.getElementById("usuarioel3").readOnly = true;
-                
+            document.getElementById("Rolel").readOnly = true;
+            document.getElementById("Estadoel").readOnly = true;    
 
            
 
