@@ -19,13 +19,13 @@ if (isset($_POST['submitf'])){
     if (($find1) && (!$find2)) {
 
 
-        $_SESSION['sql1'] = "SELECT * FROM usuarios WHERE Id_Usuario LIKE '%$find1%'";
+        $_SESSION['sql1'] = "SELECT * FROM usuarios WHERE Nombre LIKE '%$find1%'";
         header("location: ../Paginas/AdministrarUsuarios.php");
     }
 
 
     if (($find1) && ($find2)) {
-        $_SESSION['sql1'] = "SELECT * FROM usuarios WHERE Correo LIKE '%$find2%' and Id_Usuario LIKE '%$find1%' ";
+        $_SESSION['sql1'] = "SELECT * FROM usuarios WHERE Correo LIKE '%$find2%' and Nombre LIKE '%$find1%' ";
         header("location: ../Paginas/AdministrarUsuarios.php");
     }
 
@@ -61,30 +61,8 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
         $Apellido2 = $_POST['Apellido2'];
         $Password = $_POST['Password'];
         $Correo = $_POST['Correo'];
-       
-
-
-
-        if ($_POST["Admin1"] == "true") {
-            $Role_Admin = "X";
-        } else {
-            $Role_Admin = "";
-        }
-
-
-        if ($_POST["Mant2"] == "true") {
-            $Role_Mant = "X";
-        } else {
-            $Role_Mant = "";
-        }
-
-        if ($_POST["usuario3"] == "true") {
-            $Role_Usuario = "X";
-        } else {
-            $Role_Usuario = "";
-        }
-
-
+       $Role = $_POST['Rol'];
+        $Estado = $_POST['Estado'];
 
 
     }
@@ -101,28 +79,8 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
         $Apellido2 = $_POST['Apellido2e'];
         $Password = $_POST['Passworde'];
         $Correo = $_POST['Correoe'];
-        
-
-
-        if ($_POST["Admine1"] == "true") {
-            $Role_Admin = "X";
-        } else {
-            $Role_Admin = "";
-        }
-
-
-        if ($_POST["Mante2"] == "true") {
-            $Role_Mant = "X";
-        } else {
-            $Role_Mant = "";
-        }
-
-        if ($_POST["usuarioe3"] == "true") {
-            $Role_Usuario = "X";
-        } else {
-            $Role_Usuario = "";
-        }
-
+        $Role = $_POST['Role'];
+        $Estado = $_POST['Estadoe'];
 
     }
 
@@ -139,9 +97,11 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
 
 
 
-    $sql = "SELECT * FROM usuarios WHERE Correo = '$Correo'"; //Filtro con correo en la base de datos
+    $sql = "SELECT * FROM usuarios WHERE Correo = '$Correo'";
     $resultado = mysqli_query($conn, $sql);
+    $usuario = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
     $rowCount = mysqli_num_rows($resultado); //Obtener las lineas obtenidas de la base de datos con el resultado obtenido despues del filtro
+   
 
 
     //Validacion que la lineas obtenidas sean mayor a 0,lo cual significa que si se encontro una linea con el mismo correo 
@@ -163,13 +123,13 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
 
             // Codificar Password
 
-            $password_hash = password_hash($Password, PASSWORD_DEFAULT);
+            $password_hash = password_hash($Password, PASSWORD_BCRYPT);
 
 
 
 
 
-            $sql = "INSERT INTO usuarios (Nombre_Usuario,Nombre,Apellido1,Apellido2,Password,Correo,Role_Admin,Role_Mant,Role_Usuario) VALUES (?,?,?,?,?,?,?,?,?) ";
+            $sql = "INSERT INTO usuarios (Nombre_Usuario,Nombre,Apellido1,Apellido2,Password,Correo,Rol,Estado) VALUES (?,?,?,?,?,?,?,?) ";
             $stmt = mysqli_stmt_init($conn);
             $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
 
@@ -178,7 +138,7 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
 
 
 
-                mysqli_stmt_bind_param($stmt, "sssssssss", $Nombre_Usuario, $Nombre, $Apellido1, $Apellido2, $password_hash, $Correo, $Role_Admin, $Role_Mant, $Role_Usuario);
+                mysqli_stmt_bind_param($stmt, "ssssssss", $Nombre_Usuario, $Nombre, $Apellido1, $Apellido2, $password_hash, $Correo, $Role, $Estado);
                 mysqli_stmt_execute($stmt);
 
 
@@ -191,10 +151,10 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
 
 
             if ($stmt->errno == 0) {
-                $_SESSION['resultado'] = "<div class='mensaje-sql-exitoso'><h1> Acción realizada stisfactoriamente</h1></div>";
+                $_SESSION['resultado'] = "<div class='mensaje-sql-exitoso'><h1> Acci&oacuten realizada stisfactoriamente</h1></div>";
                 header("location: ../Paginas/AdministrarUsuarios.php");
             } else {
-                $_SESSION['resultado'] = "<div class='mensaje-sql-error'><h1> Se genero un error al realizar la acción,intente de nuevo</h1></div>";
+                $_SESSION['resultado'] = "<div class='mensaje-sql-error'><h1> Se genero un error al realizar la acci&oacuten,intente de nuevo</h1></div>";
                 header("location: ../Paginas/AdministrarUsuarios.php");
             }
 
@@ -224,13 +184,26 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
 
             // Codificar Password
 
-            $password_hash = password_hash($Password, PASSWORD_BCRYPT);
+
+            if ((password_verify($Password, $usuario["Password"])) || ($Password == $usuario["Password"])) {
+
+
+                $sql = " UPDATE `usuarios` SET `Nombre_Usuario` = '$Nombre_Usuario',`Nombre` = '$Nombre' , `Apellido1` = '$Apellido1' , `Apellido2` = '$Apellido2' ,`Correo` = '$Correo' ,`Rol` = '$Role' ,`Estado` = '$Estado' WHERE `usuarios`.`Id_Usuario` = $id_Usuario";
+
+            }else {
+
+
+                $password_hash = password_hash($Password, PASSWORD_BCRYPT);
+
+
+                $sql = " UPDATE `usuarios` SET `Nombre_Usuario` = '$Nombre_Usuario',`Nombre` = '$Nombre' , `Apellido1` = '$Apellido1' , `Apellido2` = '$Apellido2' ,`Password` = '$password_hash' ,`Correo` = '$Correo' ,`Rol` = '$Role' ,`Estado` = '$Estado' WHERE `usuarios`.`Id_Usuario` = $id_Usuario";
+
+            }
+            
+            
+          
 
             
-
-            
-
-            $sql = " UPDATE `usuarios` SET `Nombre_Usuario` = '$Nombre_Usuario',`Nombre` = '$Nombre' , `Apellido1` = '$Apellido1' , `Apellido2` = '$Apellido2' ,`Password` = '$password_hash' ,`Correo` = '$Correo' ,`Role_Admin` = '$Role_Admin' ,`Role_Mant` = '$Role_Mant' ,`Role_Usuario` = '$Role_Usuario' WHERE `usuarios`.`Id_Usuario` = $id_Usuario";
 
             $stmt = mysqli_stmt_init($conn);
             $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
@@ -254,10 +227,10 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
 
 
             if ($stmt->errno == 0) {
-                $_SESSION['resultado'] = "<div class='mensaje-sql-exitoso'><h1> Acción realizada stisfactoriamente</h1></div>";
+                $_SESSION['resultado'] = "<div class='mensaje-sql-exitoso'><h1> Acci&oacuten realizada stisfactoriamente</h1></div>";
                 header("location: ../Paginas/AdministrarUsuarios.php");
             } else {
-                $_SESSION['resultado'] = "<div class='mensaje-sql-error'><h1> Se genero un error al realizar la acción,intente de nuevo</h1></div>";  //Error al realizar el sql
+                $_SESSION['resultado'] = "<div class='mensaje-sql-error'><h1> Se genero un error al realizar la acci&oacuten,intente de nuevo</h1></div>";  //Error al realizar el sql
                 header("location: ../Paginas/AdministrarUsuarios.php");
             }
 
@@ -265,7 +238,7 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
 
             if ($accion == 'Editar') {
 
-                $_SESSION['resultado'] = "<div class='mensaje-sql-error'><h1> Ya existe un registro con la informacion ingresada</h1></div>"; // Validacion con row 2 que contiene si ha una entrada con la misma informacion
+                $_SESSION['resultado'] = "<div class='mensaje-sql-error'><h1> Ya existe un registro con la informaci&oacuten ingresada</h1></div>"; // Validacion con row 2 que contiene si ha una entrada con la misma informacion
                 header("location: ../Paginas/AdministrarUsuarios.php");
             }
 
@@ -282,7 +255,7 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
 
             // Codificar Password
 
-            $password_hash = password_hash($Password, PASSWORD_DEFAULT);
+            $password_hash = password_hash($Password, PASSWORD_BCRYPT);
 
             
 
@@ -311,10 +284,10 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
 
 
             if ($stmt->errno == 0) {
-                $_SESSION['resultado'] = "<div class='mensaje-sql-exitoso'><h1> Accion realizada stisfactoriamente</h1></div>";
+                $_SESSION['resultado'] = "<div class='mensaje-sql-exitoso'><h1> Acci&oacuten realizada stisfactoriamente</h1></div>";
                 header("location: ../Paginas/AdministrarUsuarios.php");
             } else {
-                $_SESSION['resultado'] = "<div class='mensaje-sql-error'><h1> Se genero un error al ingresar la informacion,intente de nuevo</h1></div>";
+                $_SESSION['resultado'] = "<div class='mensaje-sql-error'><h1> Se genero un error al ingresar la informaci&oacuten,intente de nuevo</h1></div>";
                 header("location: ../Paginas/AdministrarUsuarios.php");
             }
 
