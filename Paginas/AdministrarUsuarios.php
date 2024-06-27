@@ -2,10 +2,10 @@
 
 <?php
 use MongoDB\Driver\Session;
-include ('../SecureLogin.php');
+//include ('../SecureLogin.php');
 
 
-
+session_start();
 $_SESSION['Nombre'];
 
 ?>
@@ -18,14 +18,14 @@ $_SESSION['Nombre'];
       <!-- Declaracion variables-->
     <?php
     $titulo = "Usuarios";
-    
+    $_SESSION['Categoria'] = $titulo;
         
     ?>
 
     <!-- Librearias y links-->
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    
+  
     <link href="../CSS/Style-General.css" rel="stylesheet"/>
 
     
@@ -35,107 +35,62 @@ $_SESSION['Nombre'];
 
 <body >
 
-    
+      <header>
+                <nav >
+               
+                    <ul>
+               
+                  <li class="logo"><img src="../Imagenes/Logo.jpg" /></li>
+                  
+                    <li > <h2 class="titulo"> Administrar <?php echo $titulo; ?> </h2></li>
+     
+                    <li class="logout"> 
+                
+ <?php
+
+ switch ($_SESSION["Rol"]) {
+
+     case "Administrador":
+
+         ?> 
+       <a  href="../Paginas/IndiceAdmin.php" class="last-link" ><h3><span class="material-symbols-outlined">home</span> Inicio</h3></a> 
+        <?php
+        break;
+     case "Mantenimiento":
+
+         ?> 
+         <a  href="../Paginas/IndiceMant.php" class="last-link" ><h3><span class="material-symbols-outlined">home</span> Inicio</h3></a> 
+        <?php
+        break;
+     case "Consultor":
+
+         ?> 
+       <a  href="../Paginas/IndiceConsultor.php" class="last-link" ><h3><span class="material-symbols-outlined">home</span> Inicio</h3></a> 
+        <?php
+
+        break;
+     default:
+         $fields = "Usuario no tiene un rol asignado";
+         break;
+ }
+
+ ?> 
+
+    <a class="last-link" href="../SecureLogOut.php" ><h3> <span class="material-symbols-outlined">logout</span>Cerrar Sesi&oacuten</h3></a>
+</li>
+                     
+
+
+
+                </ul>
+                </nav>
+            </header>    
+                  
 
 
     <div class="container">
     
-     <!-- ----------------------------------Inicio de aside , barra iquierda ---------------------------------- -->
-    <div class="sidebar-global">
-        
-   
-        <aside>
-            
-            <div class="top">
-
-                  <div class="logo">
-                  <img src="../Imagenes/Logo.png" />
-                  </div>
-
-             </div>
-
-
-            <div class="sidebar">
-                
-
-                <?php
-
-                if($_SESSION["Role"] == "Admin"){
-                  
-                 ?>              
-                    <a  href="../Paginas/IndiceAdmin.php" >
-                
-                   <h3> <span class="material-symbols-outlined">home</span>Inicio</h3>
-                    
-                </a>
-
-                <?php
-
-                }elseif ($_SESSION["Role"] == "Mant") {
-                   
-                ?>
-                 
-                 <a  href="../Paginas/IndiceMant.php" >
-                
-                   <h3> <span class="material-symbols-outlined">home</span>Inicio</h3>
-                    
-                </a>
-
-                <?php
-
-                }else {
-                   ?> 
-                 <a  href="../Paginas/IndiceUsuario.php" >
-                
-                   <h3> <span class="material-symbols-outlined">home</span>Inicio</h3>
-                    
-                </a>
-
-
-                <?php
-                }
-
-                ?>
-
-
-
-
-               
-
-                
-
-                <a  href="#" >
-                
-                   <h3> <span class="material-symbols-outlined">info</span>Acerca</h3>
-                    
-                
-                </a>
-
-                <a  href="#" >
-                
-                   <h3> <span class="material-symbols-outlined">contacts</span> Contacto</h3>
-                   
-                
-                </a>
-
-
-                 <a class="last-link" href="../SecureLogOut.php" >
-                
-                   <h3> <span class="material-symbols-outlined">logout</span>Cerrar Sesion</h3>
-                    
-                
-                </a>
-
-
-
-            </div>
-
-        </aside>
-    
-   
-    </div>
-     <!-- ----------------------------------Fin de aside , barra iquierda ---------------------------------- -->
-
+  
           <!-- ----------------------------------Inicio de main , centro pagina---------------------------------- -->
 
         
@@ -143,61 +98,42 @@ $_SESSION['Nombre'];
     
 
 
-        
-            <div class="date">
-                <p id="date-container"></p>
-            </div>
-
-
-
 
 
         <div class="tabla-centro">
-
-
-
-            <h2> Administrar <?php echo $titulo; ?> </h2>
 
             <div class="tabla">
 
 
                <div class="agregar-exportar-iconos">
-                   
-                       
-                       <a href="../Exportar.php"> <span class="material-symbols-outlined">ios_share </span> Exportar </a>
-                       
-                       
-                       <button onclick="agregar()" class="show-popup-agregar" ><span class="material-symbols-outlined">add </span>Agregar</button>
-                       
-                       
-                   
-                   </div>
+   <a class="boton-Exportar" href="../Exportar.php"> <span class="material-symbols-outlined">ios_share </span></a>
+   <button onclick="agregar()" class="show-popup-agregar" ><span class="material-symbols-outlined">add </span></button>
+   </div>
                
                 
                 <form action="../SQLs/SQL-Usuarios.php" class="filtros" method="POST" >
                     <div class="filtrar1">
-                           <p> Filtrar por Id Usuario: </p>
+                           <p>Nombre: </p>
                        <input type="text" name="find1" />
                         
                      </div>
 
-                 <div class="filtrar2">
-                           <p> Filtrar por Correo: </p>
+                 <div class="filtrar1">
+                           <p>Correo: </p>
                        <input type="text" name="find2" />
                         
                      </div>
-                    <button class="btn-filtrar" type="submit" name="submitf" ><span class="material-symbols-outlined">search</span></button>
-                    <button class="btn-filtrar" type="submit" name="submitundo" ><span class="material-symbols-outlined">undo</span></button>
-
-
-                 </form>
-
+                     <div class="filtrar-undo-iconos">
+                     <button  type="submit" name="submitf" ><span class="material-symbols-outlined">search</span></button>
+                     <button  type="submit" name="submitundo" ><span class="material-symbols-outlined">undo</span></button>
+                     </div>
+                    
 
                     <!--  Inicio mensaje Respuesta Agregar a la base de datos   -->
 
                 <?php
                 if (isset($_SESSION['resultado']) && $_SESSION['resultado'] != '') {
-                    
+
                     ?>
                     
                 
@@ -210,24 +146,25 @@ $_SESSION['Nombre'];
                 ?>
                 
                 <!--  Fin mensaje Respuesta Agregar a la base de datos   -->
+                 </form>
+
                 
                 
                
-   
-   <table id="tabla" class = "table">
+   <div class="tbl-scroll">  
+   <table id="tabla" class = "table" cellspacing="0">
       <thead>
           <tr>
              <th>ID Usuario</th>
  <th>Nombre Usuario</th>  <!--Titulos de la tabla-->
   <th>Nombre</th>
-  <th>Apellido1</th>
-  <th>Apellido2</th>
-  <th>Password</th>
+  <th>Apellido 1</th>
+  <th>Apellido 2</th>
   <th>Correo</th>
-  <th>Role_Admin</th>
-  <th>Role_Mant</th>
-  <th>Role_Usuario</th>
-          <th >Accion</th>
+  <th>Password</th>
+  <th>Rol</th>
+  <th>Estado</th>
+          <th >Acci&oacuten</th>
          </tr>
 
       </thead>
@@ -244,11 +181,11 @@ $_SESSION['Nombre'];
 
                if($_SESSION['sql1']){
               $sql = $_SESSION['sql1'];
-
+              
                }else {
 
               $sql = "SELECT * FROM usuarios";    // Si no hay un sql nuevo para buscar , entonces select *
-            
+              $_SESSION['sql2'] = $sql;
                }
 
           // Fin Validar si hay un sql nuevo para buscar
@@ -273,11 +210,10 @@ $_SESSION['Nombre'];
 <td class="Nombre" >  <?php echo $row["Nombre"]; ?> </td>
 <td  class="Apellido1" >  <?php echo $row["Apellido1"]; ?> </td>
 <td   class="Apellido2" >  <?php echo $row["Apellido2"]; ?> </td>
-<td  class="Password" >  <?php echo $row["Password"]; ?> </td>
 <td  class="Correo">  <?php echo $row["Correo"]; ?> </td>
-<td  class="Role_Admin">  <?php echo $row["Role_Admin"]; ?> </td>
-<td  class="Role_Mant">  <?php echo $row["Role_Mant"]; ?> </td>
-<td  class="Role_Usuario">  <?php echo $row["Role_Usuario"]; ?> </td>
+<td  class="Password">  <?php echo $row["Password"]; ?> </td>
+<td  class="Rol">  <?php echo $row["Rol"]; ?> </td>
+<td  class="Estado">  <?php echo $row["Estado"]; ?> </td>
 
                <td> 
                     <button  type = "button" value = "Editar" class = "boton-popup"  ><span class="material-symbols-outlined"> edit </span></button>
@@ -308,7 +244,7 @@ $_SESSION['Nombre'];
 
       </tbody>
    </table>
-
+       </div>
              </div>
 
           
@@ -326,48 +262,6 @@ $_SESSION['Nombre'];
      <!-- ----------------------------------Fin de main , centro pagina---------------------------------- -->
 
 
-
-        <!-- ----------------------------------Inicio Top derecha---------------------------------- -->
-
-        <div class="right">
-
-
-
-            <div class="top">
-
-                <div class="perfil">
-                    
-                    <div class="info">
-                        <p> Hola , <b> <?php echo $_SESSION['Nombre']; ?> </b></p>
-                        
-                    </div>
-                
-
-                
-                <div class="perfil-foto">
-                    <span class="material-symbols-outlined">account_circle</span>
-                </div>
-                
-                </div>
-
-
-            </div>
-
-
-
-
-
-
-
-        </div>
-
-
-        <!-- ----------------------------------Fin Top derecha---------------------------------- -->
-
-
-
-
-        
               <!--  ----------------------- Inicio popup agregar ----------------------- -->
 
 
@@ -379,14 +273,15 @@ $_SESSION['Nombre'];
          
         <div class="instrucciones">
        
-             <img src="../Imagenes/Logo.png" id="logo" class="image-logo"/> 
+            
             
              
-                      <br /><br /><br />
-                      Instrucciones Generales:<br /><br />
-                      1-No dejar ningun campo en blanco.<br />
-                      2-Password tiene que ser de al menos 8 caracteres.<br />
-                      3-Utilizar el formato email@ulatina.net para el campo de correo.<br /><br /><br />
+                          <br /><br /><br />
+         Instrucciones Generales:<br /><br />
+         1-No dejar ningun campo en blanco.<br />
+         2-Utilizar el estado tipo Activo o Inactivo solamente.<br />
+         3-Por favor utilizar solamente las opciones que aparecen en la lista de opciones de Rol.<br />
+         4-Por favor utilizar el formato de ejemplo@ulatina.net para el campo de Correo.<br />
              <div>
               <button onclick="agregarCerrar()" class="boton-cerrar"> Cerrar</button>  
              </div>
@@ -460,19 +355,45 @@ $_SESSION['Nombre'];
                 <input type="email" class="form-control" name="Correo" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
             </div>
 
-              <!-- Input para role -->
-            <div class="checkboxes">
-                
-                <input type="checkbox"  class="Roleel" name="Admin1" value="true" id="Admin1"/> <label> Administrador</label>
-                <input type="checkbox" class="Roleel" name="Mant2" value="true" id="Mant2" /> <label> Mantenimiento</label>
-                <input type="checkbox"  class="Roleel" name="usuario3" value="true" id="usuario3"/><label>Usuario</label>
+            
+              <!-- Input para Estado -->
+            
+            
+             <div class="form-group">
+                <a class="sub">Rol :</a>
+            
+                  <select type="text"  class="form-control"  name="Rol"  id="Rol" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required>
+
+                            <option  >Administrador</option>
+                            <option  >Mantenimiento</option>
+                            <option  >Consultor</option>
+                  </select>
+
             </div>
 
-            <!-- Boton para Agregar  -->
+
+                <!-- Input para Estado -->
             
-                
+            
+             <div class="form-group">
+                <a class="sub">Estado :</a>
+            
+                  <select type="text"  class="form-control"  name="Estado"  id="Estado" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required>
+
+                            <option  >Activo</option>
+                            <option  >Inactivo</option>
+                            <option  >Ausente</option>
+                  </select>
+
+            </div>
+
+
+
+          <!-- Boton para Agregar  -->
+            
+                <div class="botonagregardiv">
                  <button  class="boton-agregar" type="submit" name="submita" value="Agregar" > Agregar</button>
-                
+                </div>
         </form>
                    
         
@@ -511,15 +432,13 @@ $_SESSION['Nombre'];
          
         <div class="instrucciones">
        
-             <img src="../Imagenes/Logo.png" id="logo" class="image-logo"/> 
-            
-              
-                  
+         
                       <br /><br /><br />
-                      Instrucciones Generales:<br /><br />
-                      1-No dejar ningun campo en blanco.<br />
-                      2-Password tiene que ser de al menos 8 caracteres.<br />
-                      3-Utilizar el formato email@ulatina.net para el campo de correo.<br /><br /><br />
+         Instrucciones Generales:<br /><br />
+         1-No dejar ningun campo en blanco.<br />
+         2-Utilizar el estado tipo Activo o Inactivo solamente.<br />
+         3-Por favor utilizar solamente las opciones que aparecen en la lista de opciones de Rol.<br />
+         4-Por favor utilizar el formato de ejemplo@ulatina.net para el campo de Correo.<br />
              <div>
               <button onclick="editarCerrar()" class="boton-cerrar"> Cerrar</button>  
              </div>
@@ -595,25 +514,43 @@ $_SESSION['Nombre'];
                 <input type="email" class="form-control" name="Correoe" id="Correoe" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
             </div>
 
-              <!-- Input para role -->
+              <!-- Input para Rol -->
             
-                
-                <div class="checkboxes">
-                <input type="checkbox"  id="Admine1" name="Admine1" value="true"/> <label> Administrador</label>
-                <input type="checkbox"   id="Mante2" name="Mante2" value="true"/> <label> Mantenimiento</label>
-                <input type="checkbox"  id="usuarioe3" name="usuarioe3" value="true"/><label>Usuario</label>
-                 </div>
+            
+             <div class="form-group">
+                <a class="sub">Rol :</a>
+            
+                  <select type="text"  class="form-control"  name="Role"  id="Role" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required>
 
+                            <option  >Administrador</option>
+                            <option  >Mantenimiento</option>
+                            <option  >Consultor</option>
+                  </select>
 
+            </div>
+            
+                <!-- Input para Estado -->
+            
+            
+             <div class="form-group">
+                <a class="sub">Estado :</a>
+            
+                  <select type="text"  class="form-control"  name="Estadoe"  id="Estadoe" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required>
+
+                            <option  >Activo</option>
+                            <option  >Inactivo</option>
+                            <option  >Ausente</option>
+                  </select>
+
+            </div>
 
             
 
-            <!-- Boton para Actualizar  -->
+             <!-- Boton para Actualizar  -->
             
-                
-                 <button  class="boton-editar" type="submit" name="submited" value="Actualizar" > Actualizar</button>
-                
-                
+                <div class="botonagregardiv">
+                 <button  class="boton-editar" type="submit" name="submited" value="Actualizar" >Actualizar</button>
+                </div>
 
         </form>
                    
@@ -648,33 +585,6 @@ $_SESSION['Nombre'];
 
 
      <div class="popup-container-eliminar">
-
-
-         <!-- ----------------- Inicio Instrucciones --------------------- -->
-
-         
-        <div class="instrucciones">
-       
-             <img src="../Imagenes/Logo.png" id="logo" class="image-logo"/> 
-            
-              
-                  
-                      <br /><br /><br />
-                      Instrucciones Generales:<br /><br />
-                      1-No dejar ningun campo en blanco.<br />
-                      2-Password tiene que ser de al menos 8 caracteres.<br />
-                      3-Utilizar el formato email@ulatina.net para el campo de correo.<br /><br /><br />
-             <div>
-              <button onclick="editarCerrar()" class="boton-cerrar"> Cerrar</button>  
-             </div>
-
-	     </div>
-
-
-
-
-         
-         <!-- ----------------- Fin Instrucciones --------------------- -->
 
                <div class="popup-eliminar">
 
@@ -736,22 +646,27 @@ $_SESSION['Nombre'];
                 <input   type="email" class="form-control" name="Correoel" id="Correoel" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required />
             </div>
 
-              <!-- Input para role -->
+              <!-- Input para Role -->
+            <div class="form-group">
+                <a class="sub">Rol:</a>
+                <input   type="email" class="form-control" name="Rolel" id="Rolel" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required />
+            </div>
             
-                <div class="checkboxes">
-                <input disabled="disabled"  type="checkbox"  class="Roleel" id="Adminel1" name="Adminel1" value="Admine" /> <label> Administrador</label>
-                <input disabled="disabled"  type="checkbox" class="Roleel" id="Mantel2" value="Mantel"/> <label> Mantenimiento</label>
-                <input disabled="disabled"  type="checkbox"  class="Roleel" id="usuarioel3" value="usuarioel"/><label>Usuario</label>
-                    </div>
-
             
-
-            <!-- Boton para Eliminar  -->
+                <!-- Input para Estado -->
             
-                
+            
+            <div class="form-group">
+                <a class="sub">Estado:</a>
+                <input   type="email" class="form-control" name="Estadoel" id="Estadoel" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required />
+            </div>
+            
+ <!-- Boton para Eliminar  -->
+            
+               <div class="botonesEliminar">
                  <button  class="boton-editar" type="submit" name="submite" value="Actualizar" > eliminar</button>
-                
-                
+                 <button  onclick="editarCerrar()" type="button"> Cerrar</button> 
+                   </div>
 
         </form>
                    
@@ -792,7 +707,12 @@ $_SESSION['Nombre'];
     </div> <!-- Fin div Container-->
 
 
+    <div class="separator"></div>
    
+
+    <footer>
+
+</footer>
 
     <!-- ------------ JavaScripts -----------------------  -->
 
