@@ -1,46 +1,46 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 
 :root {
     /* -----------------Inicio Declaracion variables colores ----------------- */
-
-                  /* ----------  Diseno Fecha/hora ---------- */
+    /* ----------  Diseno Fecha/hora ---------- */
 
     --border-radius-fecha: 10px;
-
-                 /* ----------  Diseno tabla ---------- */
+    /* ----------  Diseno tabla ---------- */
 
     --color-letra-table-row: rgb(10, 10, 10);
-    --color-botones-tabla:#242a2c;
-     
+    --color-botones-tabla: #242a2c;
     /* Diseno de letra bienvenida y filtrar por */
 
-    --color-letra-filtrar-bienvenida:#242a2c;
-
-                /* ----------  Diseno global ---------- */
-
+    --color-letra-filtrar-bienvenida: #242a2c;
+    /* ----------  Diseno global ---------- */
+    
 
     --color-base: #242a2c;
-    --color-base2: rgba(132,139,200,0.18);
+    --color-base2: rgb(10, 10, 10, 0.26);
     --shadow-global: 0 2rem 3rem var(--color-base2);
     --color-background-containers: #fff;
     --color-background: #e2e2e2; /* Color del background completo*/
     --radius-global: 5px;
+    /* Title Side bar*/
 
-                /* ----------  Diseno popup ---------- */
+    --color-sidebar-dropdown-title-submenu-hover: rgba(132,139,200,0.18);
+    --color-sidebar-dropdown-title-background: #242a2c;
+    --color-sibebar-dropdown-title-font: #fff;
+    /* Submenu side bar*/
 
+    --color-sidebar-dropdown-submenu-background: #242a2c;
+    --color-sibebar-dropdown-submenu-font: #fff;
+    --color-sidebar-dropdown-submenu-hover: rgba(132,139,200,0.18);
+    /* ----------  Diseno popup ---------- */
     --color-background-button-popup: rgb(255, 106, 0, 0.6);
     --color-popup-checkbox: #242a2c;
-
     /* ----------  Diseno msj sql ---------- */
 
     --color-background-mensaje-sql-exitoso: #38ac81;
     --color-background-mensaje-sql-error: #c35252;
     --color-letra-mensaje-sql-exitoso: #d5ddde;
     --color-letra-mensaje-sql-error: #242a2c;
-
-
-
     /* -----------------Fin Declaracion variables colores ----------------- */
 }
 
@@ -50,65 +50,131 @@
     margin: 0;
     padding: 0;
     outline: 0;
-    
     border: 0;
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
 }
 
-html {
-    font-size: 14px;
-    
-}
 
-body {
+
+body, html {
     width: 100vw;
-    height: 100vh;
     font-family: Montserrat,sans-serif;
-    font-size: 0.88rem;
-    margin: 0;
-    background: var(--color-background);
-    user-select: none;
-    overflow-x: hidden;
+    font-size: 14px;
+    height:100%;
+    background: #3e8d8d;
 }
 
 
-button{
-    background-color: transparent;          /* Para que todos los botones tengan background transparente*/
+.separator {
+    width: 0;
+    height: 0;
+    border-right: 100vw solid transparent;
+    border-bottom: 13.9vw solid #5cc4c3;
+    margin-top: 0;
 }
 
 
+footer {
+    height:12%;
+    background: #5cc4c3;
+    position: relative;
+    margin-bottom:0;
+}
 
-
-
-.container{
-    display:grid;
-    width:96%;
-    margin:0 auto;
+/*
+    -----------------------------------------------Inicio diseno Iconos redes sociales-----------------------------------------------
+*/
+.icons-sociales {
     
+   
+    color: #ffffff; /*color global para texto,iconos */
+    width: 2%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-left:50%;
+}
+
+
+
+
+.a-iconos {
+    width: 200px;
+    
+    color: black;
+   
+    margin-right:100px;
+    margin-bottom:50px;
+    font-size: 25px;
+}
+
+    .a-iconos i {
+        transition: all 0.3s;
+    }
+
+    .a-iconos:hover {
+        font-size: 30px; /* Icono aumenta tamano al hover*/
+        color: #fcb851; /* Icono cambia color al hover*/
+    }
+
+
+/*
+    -----------------------------------------------Fin diseno Iconos redes sociales-----------------------------------------------
+*/
+
+
+header{
+    background: #fff;
+    height:80px;
+}
+
+.titulo {
+    padding: 25px 25px;
+    color:#3e8d8d;
+    text-align:center;
+    font-size:20px;
+}
+
+button {
+    background-color: transparent; /* Para que todos los botones tengan background transparente*/
+    color:#f16242;
+}
+
+.boton-Exportar{
+    color:#f16242;
+}
+
+
+
+.container {
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 14rem auto 17rem;  /* tamano de : aside or side section  /  center section / right section*/
+    grid-template-columns: 14rem auto 10rem; /* tamano de : aside or side section  /  center section / right section*/
 }
 
 
 
 
 a {
-    color: var(--color-base);
+    color: #3e8d8d;
 }
 
 
-img{
-    display:block;
-    width: 100%;
+img {
+    display: block;
+    margin-left: 15%;
+   
 }
 
 
 /*-------------------------- Inicio Font Titulos ------------------------------*/
 
 
-h1{
+h1 {
     font-weight: 800;
     font-size: 15px;
 }
@@ -119,9 +185,8 @@ h2 {
 }
 
 h3 {
-    font-size: 15px;
-    display:flex;    /*titulos del sidebar*/
-    
+    font-size: 18px;
+    display: flex; /*titulos del sidebar*/
 }
 
 
@@ -133,181 +198,92 @@ span {
 
 /*--------------------------Fin Font Titulos ------------------------------*/
 
-
-
-
-p{
-    color:var(--color-letra-filtrar-bienvenida);
+aside {
+    height: 60vh;
+    margin: 0;
 }
 
 
 
-aside{   
-    height: 100vh;
-    margin:0;
-}
-
- aside .top {
-        
-        display: flex;
-        align-items:center;
-        justify-content: space-between;
-        margin-top: 1.4rem;
-
-}
-
- aside .logo{
-     display: flex;
-     gap:0.8rem;
- }
-
-
- aside .logo img {
-     width: 100%;
-     height:100%;
-     padding:2%;
- }
-
-
-
-/* ---------------- Side bar a la izquierda ----------------  */
-
-aside h3 {
-        font-weight: 500;
-}
-
-    aside .sidebar a {
-        display: flex;
-        
-        margin-left: 2rem;
-        gap: 1rem;
-        align-items: center;
-        position: relative;
-        height: 3.7rem;
-        
-    }
-
-        aside .sidebar a span {
-            font-size: 1.6rem;
-            
-        }
-
-        aside .sidebar a.active {
-            background: var(--color-base2);
-            color: var(--color-base);
-            margin-left: 0;
-        }
-
-    aside .sidebar {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        height: 86vh;
-        top: 3rem;
-        transition: all 10ms ease;
-        margin-left: 15%;
-        margin-right: 15%;
-    }
-
-/* --------------------- Color del side bar global --------------------- */
-
-.sidebar-global {
-    background: var(--color-background-containers);
-    border-radius: var(--radius-global);
-    box-shadow: var(--shadow-global);
-    margin-top: 1.4rem;
+p {
+    color: var(--color-letra-filtrar-bienvenida);
 }
 
 
-/* -------------------- Inicio Poner el ultimo li (cerrar sesion) al bottom------------------- */
-
-    aside .sidebar .last-link {
-        position: absolute;
-        bottom: 2rem;
-        width: 100%;
-        
-    }
-
-    /* -------------------- Fin Poner el ultimo a al bottom-------------------*/
+    /* ---------------- Side bar a la izquierda ----------------  */
 
 
-    /* -------------------- Inicio hover de cada a dentro del sidebar-------------------*/
 
 
-aside .sidebar a {
-    color: var(--color-base); /*color letras del sidebar */
-    margin-left: 0;
+ul{
+    text-align:center;
+    background:#fff;
 }
 
-    aside .sidebar a:hover {
-        content: "";
-        width: 6px;
-        background: var(--color-base); /*color linea izquierda sidebar */
-        background: #97d700;
-    }
-
-
-aside .sidebar a:hover span {
-    margin-left: 1rem;
-}
-
-/* ---------------- Inicio esconder / desplegar links de administrar y reportes*/
-
-
-.item .sub-menu {
-    display: none;
-    
-}
-
-.item:hover .sub-menu{
-    display: block;
-    color: white;
-    
-}
-
-
-.sub-menu .item {
-    padding-left: 6px;
-    
-}
-
-
-
-/* ---------------- Fin esconder / desplegar links de administrar y reportes*/
-
-
-/* -------------------- Fin active de cada a dentro del sidebar-------------------*/
-
-
-
-
-/* -------------------- Inicio Main,centro pagina-------------------*/
-
-main{
-    margin-top: 1.4rem;
-    
-}
-
-
-main .date{
+ul li{
     display: inline-block;
+    position:relative;
+}
+
+ul .logo{
+    float: left;
+    width:250px;
+}
+
+ul .logout {
+    float: right;
+    margin-right: 0;
+    display:flex;
+}
+
+ul li a{
+    display:block;
+    padding:30px 25px;
+    font-size:16px;
+    text-align:center;
+    margin-right:15px;
+}
+
+ul li ul li a{
+    padding:10px 25px;
+    text-align:left;
     
-    border-radius: var(--border-radius-fecha);
-    margin-top: 1rem;
-    padding:0.5rem 0.2rem;
-    text-align: center;
 }
 
-main .date p{
-color: var(--color-base);
-font-weight: 500;
-font-size:13px;
-background: var(--color-background-containers);
-border-radius: var(--radius-global);
-box-shadow: var(--shadow-global);
-padding: 10%;
 
+ul li ul.dropdown li {
+    display:block;
+    
 }
+
+
+ul li ul.dropdown{
+    width:100%;
+    position:absolute;
+    z-index: 999;
+    display:none;
+    box-shadow: var(--shadow-global);
+    
+}
+
+
+ul li a:hover{
+    color:#5cc4c3;
+}
+
+ul li ul li a:hover{
+    color:#fff;
+}
+
+ul li ul li:hover{
+    background:#5cc4c3;
+}
+
+
+ul li:hover ul.dropdown{
+    display:block;
+}
+
 
 
 
@@ -321,26 +297,48 @@ padding: 10%;
     background: var(--color-background-containers);
     border-radius: var(--radius-global);
     box-shadow: var(--shadow-global);
-    padding: 1%;
+    
     float: right;
     gap: 10px; /* Espacio ente cada elemento*/
-    margin-right: 5px;
 }
 
-.agregar-exportar-iconos button , .agregar-exportar-iconos a{
-    
-    padding: 5px;
+.agregar-exportar-iconos a , .agregar-exportar-iconos button {
+    margin-left: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 3px;
+} 
+
+
+.agregar-exportar-iconos a{
+    color:#f16242;
 }
 
-
-.material-symbols-outlined {
-    display: grid;
+.filtrar-undo-iconos {
+    display: inline-flex;
+    margin-bottom: 10px;
+    background: var(--color-background-containers);
+    border-radius: var(--radius-global);
+    box-shadow: var(--shadow-global);
+   
+    gap: 15px; /* Espacio ente cada elemento*/
 }
 
+.filtrar-undo-iconos button{
+     margin-left:10px;
+     margin-top:10px;
+     cursor: pointer;
+      padding: 3px;
+} 
+
+.filtrar-undo-iconos button:hover{
+color: #5cc4c3;
+cursor: pointer;
+}
 
 
 .agregar-exportar-iconos a:hover, .agregar-exportar-iconos button:hover {
-    background: linear-gradient(to right, #e2e2e2, #e2e2e2);
+    color: #5cc4c3;
     border-radius: 13px;
 }
 
@@ -349,33 +347,31 @@ padding: 10%;
 
 .mensaje-sql-exitoso {
     display: inline-flex;
-    margin-bottom: 25px;
+    margin-right: 70px;
+    height: 50px;
     background: var(--color-background-mensaje-sql-exitoso);
     color: var(--color-letra-mensaje-sql-exitoso);
     border-radius: var(--radius-global);
     box-shadow: var(--shadow-global);
-    padding: 1%;
-    gap: 10px; /* Espacio ente cada elemento*/
+    padding: 6px;
+    gap: 10px; /* Espacio entre cada elemento*/
     justify-content: center;
     align-items: center;
-    margin-left: 12%;
-    margin-top: 25px;
 }
 
 
 .mensaje-sql-error {
     display: inline-flex;
-    margin-bottom: 25px;
+    margin-right: 70px;
+    height: 50px;
     background: var(--color-background-mensaje-sql-error);
     color: var(--color-letra-mensaje-sql-error);
     border-radius: var(--radius-global);
     box-shadow: var(--shadow-global);
-    padding: 1%;
+    padding: 6px;
     gap: 10px; /* Espacio entre cada elemento*/
     justify-content: center;
     align-items: center;
-    margin-left: 12%;
-    margin-top: 2%;
 }
 
 
@@ -388,141 +384,153 @@ padding: 10%;
 
 /*  ---------------------- Inicio diseno filtrar tabla ------------------  */
 
-.filtros{
+.filtros {
     display: flex;
     gap: 4px;
 }
 
-.filtrar1, .filtrar2 {
+.filtrosreportes {
+    gap: 9px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    padding-top:15px;
+    display: flex;
+    background: #fff;
+    border-radius: 15px;
+    display: inline-flex;
+    width: 100%;
+    text-align: center;
+}
+
+.filtrosreportes .filtrar-undo-iconos{
+    margin-left:20px;
+
+}
+
+
+.filtrar1 {
     display: flex;
     background: var(--color-background-containers);
     border-radius: var(--radius-global);
     box-shadow: var(--shadow-global);
-    width: 37%;
+    width: 20%;
     height: 50px;
     padding: 1%;
-   
+    color:#3e8d8d;
 }
 
-.filtrar1 input , .filtrar2 input{
-    width:70%;
-    height:50%;
+
+
+    .filtrar1 input {
+        width: 70%;
+        height: 50%;
+        border-bottom: solid 1px;
+        background-color: transparent;
+        margin-top: 4px;
+        color: #3e8d8d;
+    }
+
+.filtrar1 p {
+    color: #3e8d8d;
+    font-weight: 600;
+}
+
+
+
+
+.filtrar1reportes p{
+    color:#3e8d8d;
+    font-weight:800;
+}
+
+
+.filtrar1reportes input {
+    width: 100px;
+    height: 50%;
     border-bottom: solid 2px;
-    background-color:transparent;
-    
+    margin-right: 1px;
+    color: #3e8d8d;
 }
-
-
-.btn-filtrar {
-    background: #fff;
-    border-radius: var(--radius-global);
-    text-align: left;
-    display: flex;
-   cursor: pointer;
-    height: 50px;
-    padding-top:13px;
-    padding-left:11px;
-}
-
 
 
 /*  ---------------------- Fin diseno filtrar tabla ------------------  */
 
 
-/*  ---------------------- Fin diseno iconos exportar y agregar ------------------  */
-
-
-.tabla-centro {
-    margin-top: 2%;
-    color: var(--color-base);
-    text-align: center;
-}
-
-
-
-
 /* ----------------------- Inicio estilo de la tabla ----------------------- */
 main .tabla {
     margin-top: 2rem;
+    width: 1600px;
+    margin-left: 140px;
+    margin-bottom: 45%;
+    font-weight: 500;
+    height: 370px;
+
 }
 
     main .tabla tbody tr:hover {
-        background: linear-gradient(to right, #e2e2e2, #e2e2e2);
+        background: #3e8d8dbf;
         color: white;
+        overflow: visible;
+    }
+
+  th{
+        position:sticky;
+        top:0;
+        background:#3e8d8d;
+        color:white;
+    }
+
+    main .tabla table {
+        background: rgb(250, 248, 246);
+        width: 100%;
+        border-radius: var(--radius-global);
+        padding: 25px;
+        text-align: center;
+        box-shadow: var(--shadow-global);
+        transition: all 300ms ease;
+    }
+
+        main .tabla table:hover {
+            box-shadow: none;
+        }
+
+
+main table tbody td, main table thead th {
+    height: 2.8rem;
+    
+    border-left: 1px solid var(--color-base2); /* linea de abajo de cada fila*/
+    border-right: 1px solid var(--color-base2); /* linea de abajo de cada fila*/
+  
+}
+
+    main table tbody td button {
+        color: #5cc4c3;
     }
 
 
-main .tabla table{
-    background:var(--color-background-containers);
-    width:100%;
-    border-radius:var(--radius-global);
-    padding: 25px;
-    text-align:center;
-    box-shadow: var(--shadow-global);
-    transition:all 300ms ease;
+
+.tbl-scroll {
+    overflow: hidden;
+    margin-top: 10px;
+    max-height: 370px;
+    margin-bottom: 5px;
 }
 
-main .tabla table:hover{
-    box-shadow:none;
-
-}
-
-
-main table tbody td {
-    height: 2.8rem;
-    border-bottom: 1px solid var(--color-base2); /* linea de abajo de cada fila*/
-    color: var(--color-letra-table-row);
-    
-}
-
-main table tbody td button {
-    color: var(--color-botones-tabla);
-}
+    .tbl-scroll:hover {
+        margin-top: 5px;
+        max-height: 370px;
+      
+        overflow-y: scroll;
+    }
 
 
-main .tabla tbody tr:last-child td {
-    border:none;                                      /*quita la linea de abajo del ultimo registro de la tabla*/
-}
+    /* ----------------------- Fin estilo de la tabla ----------------------- */
+    /* -------------------- Fin Main,centro pagina-------------------*/
+    /* ----------------------- Inicio top derecha----------------------- */
+   
 
-
-
-main .tabla a {
-    text-align: center;
-    display: block;
-    margin: 1px;
-    color: var(--color-base);
-}
-
-
-/* ----------------------- Fin estilo de la tabla ----------------------- */
-
-
-/* -------------------- Fin Main,centro pagina-------------------*/
-
-
-/* ----------------------- Inicio top derecha----------------------- */
-
-.right{
-    margin-top:1.4rem;
-    
-}
-
-.right .top {
-    background:var(--color-background-containers);
-    width:100%;
-    border-radius:var(--radius-global);
-    padding: 17px 25px;
-    text-align:center;
-    box-shadow: var(--shadow-global);
-}
-
-.right .top .perfil{
-    display: flex;
-    gap: 2rem;
-    text-align:right;
-    font-size: 17px;
-}
-
+       
 
 
 
@@ -537,29 +545,18 @@ main .tabla a {
 
 
 .instrucciones {
-    position:relative;
+    position: relative;
     background: var(--color-background-containers);
-    border-radius: 5px 0px 0px 5px;
-    width:400px;
+    border-radius: 15px 0px 0px 15px;
+    width: 400px;
     text-align: left;
     height: 100%;
     padding: 2%;
-    border-right:solid 3px;
-    border-color:var(--color-base);
-   justify-content:center;
-   align-items: center;
+    border-right: solid 3px;
+    border-color: #3e8d8d;
+    justify-content: center;
+    align-items: center;
 }
-
-
-
-.instrucciones img {
-    padding: 10%;
-}
-
-
-
-
-
 
 
 /*  ---------------------- Fin Instrucciones ------------------  */
@@ -572,10 +569,21 @@ main .tabla a {
     cursor: pointer;
 }
 
+
+.botonesEliminar{
+    margin-left:40px;
+    
+}
+
+.botonesEliminar button{
+    width:50%;
+    
+}
+
 .popup-container-agregar, .popup-container-editar, .popup-container-eliminar {
     position: absolute;
     width: 70%; /*width para el form */
-    height: 70%; /*height para el form */
+    height: 74%; /*height para el form */
 
     justify-content: center;
     align-items: center;
@@ -589,10 +597,10 @@ main .tabla a {
 }
 
     .popup-container-agregar button, .popup-container-editar button, .popup-container-eliminar button {
-        color: black;
+        color: #fff;
         font-size: 12px;
         padding: 10px 45px; /*Configuracion global button dentro del popup container global*/
-        background: var(--color-background-button-popup);
+        background: #f16242;
         border-radius: 8px;
         font-weight: 600;
         text-transform: uppercase;
@@ -610,7 +618,7 @@ main .tabla a {
     }
 
 
-.boton-popup{
+.boton-popup {
     cursor: pointer;
 }
 
@@ -620,11 +628,10 @@ main .tabla a {
 .popup-agregar, .popup-editar, .popup-eliminar {
     padding: 3%; /*Espacio borde de arriba/abajo, izquierda/derecha*/
     background: #fff;
-    border-radius: 0px 5px 5px 0px;
-    
+    border-radius: 0px 15px 15px 0px;
     text-align: left;
     display: flex;
-    width: 400px;
+    width: 430px;
     height: 100%;
 }
 
@@ -634,18 +641,21 @@ main .tabla a {
     position: relative;
     width: 300px;
     height: auto;
-    margin-bottom: 30px; /*espacio entre cada Li*/
+    margin-bottom: 20px; /*espacio entre cada Li*/
     align-items: center;
     left: 4%;
     right: 4%;
-    bottom: 15px;
-    font-size: 13px;
-
     
 }
 
+.form-group .sub {
+    font-size:15px;
+    font-weight:600;
+}
+
+
     .form-group input, .form-group select {
-        width: 50%;
+        width: 35%;
         height: auto;
         border: none;
         outline: none;
@@ -667,61 +677,48 @@ main .tabla a {
         border-radius: 40px; /* Borde redondeado,que tanto se quiere */
         box-shadow: rgb(255, 255, 255) 0px 7px 29px 0px;
         font-size: 26px;
-        
         font-weight: 1000;
-        margin-left: 25%;
         cursor: pointer;
     }
 
-.boton-agregar:hover{
-    color:#97d700;
+.botonagregardiv {
+    width: 100%;
+
 }
 
 
+.botonagregardiv .boton-agregar {
+    margin-left: 30%;
+  
+}
 
-.titulo {
-    font-size: 20px;
+.botonagregardiv .boton-editar {
+    margin-left: 27%;
+   
+}
+
+
+.boton-agregar:hover {
+    color: #5cc4c3;
+}
+
+.instrucciones .boton-cerrar {
+    margin-left: 25%;
+}
+
+.boton-cerrar:hover {
+    color: #5cc4c3;
+}
+
+.titulo h2 {
     text-align: center;
-    color: var(--color-base);
+    color: #3e8d8d;
 }
-
 
 
 .form-control {
     text-align: center;
 }
-
-.checkboxes  {
-    gap: 17px;
-    
-}
-
-#Admine1, #Mante2, #usuarioe3, #Adminel1, #Mantel2, #usuarioel3, #Admin1, #Mant2, #usuario3 {
-    accent-color: var(--color-popup-checkbox);
-}
-
-
-
-/* -----------------------  Inicio diseno radio button  --------------------------------------*/
-
-
-
-/* --------------- Inicio Diseno del container radio button global --------------- */
-.Role , .Rolee , .Rolel {
-    display: block;
-    position: relative;
-    
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 13px;
-    
-    user-select: none;
-    color: var(--color-base);
-}
-
-
-
-/* -----------------------  Fin diseno radio button  --------------------------------------*/
 
 
 /* ------------------------------------ Fin formulario  ------------------------------------ */
@@ -732,7 +729,23 @@ main .tabla a {
 /* ----------------------- Fin popup edit ----------------------- */
 
 
+/*  Indice  */
 
 
+.Indiceleft, .Indiceright {
+    height: 370px;
+    background: #fff;
+    width: 500px;
+    border-radius: 5px;
+}
+
+.indice{
+  margin-left:21.8%;
+    display:flex;
+    margin-top:3%;
+    margin-bottom:3.4%;
+    gap:5%;
+    
+}
 
 
