@@ -1,4 +1,4 @@
-﻿
+
 
 let allButtons = document.getElementsByClassName('boton-popup');
     
@@ -25,11 +25,11 @@ for (let button of allButtons) {
                 let Nombre = tr.getElementsByClassName("Nombre")[0].innerHTML;
                 let Apellido1 = tr.getElementsByClassName("Apellido1")[0].innerHTML;
                 let Apellido2 = tr.getElementsByClassName("Apellido2")[0].innerHTML;
-                let NivelAcademico = tr.getElementsByClassName("Nivel_Academico")[0].innerHTML;
+                let NivelAcademico = tr.getElementsByClassName("Id_NivelAcademico")[0].innerHTML;
                 let Correo = tr.getElementsByClassName("Correo")[0].innerHTML;
                 let Celular = tr.getElementsByClassName("Celular")[0].innerHTML;
                 let Fecha_Nacimiento = tr.getElementsByClassName("Fecha_Nacimiento")[0].innerHTML;
-
+                let estado = tr.getElementsByClassName("Estado")[0].innerHTML;
 
 
 
@@ -45,19 +45,28 @@ for (let button of allButtons) {
 
                 document.getElementById("Id_cedulae").value = Idcedula.trim();
                 document.getElementById("Id_Docentee").value = IdDocente.trim();
+                document.getElementById("Estadoe").value = estado.trim();
 
-                   // obtener  la opcion seleccionada en el select por clase(nombre de la clase es el mismo id de carrera obtenido de la base de datos)
-                var dnd = document.getElementsByClassName(Idcarrera);
-                dnd[0].selected = 'selected';
-                
+
+                // obtener  la opcion seleccionada en el select por clase(nombre de la clase es el mismo id de categoria obtenido de la base de datos)
+
+                var cat = document.getElementsByClassName("Carrera-" + Idcarrera.trim());
+                cat[0].selected = 'selected';
+
+                // obtener  la opcion seleccionada en el select por clase(nombre de la clase es el mismo id de categoria obtenido de la base de datos)
+
+                var cat = document.getElementsByClassName("NivelAcademico-" + NivelAcademico.trim());
+                cat[0].selected = 'selected';
+
+
+
                 document.getElementById("Nombree").value = Nombre.trim();
                 document.getElementById("Apellido1e").value = Apellido1.trim();
                 document.getElementById("Apellido2e").value = Apellido2.trim();
-                document.getElementById("Nivel_Academicoe").value = NivelAcademico.trim();
                 document.getElementById("Correoe").value = Correo.trim();
                 document.getElementById("Celulare").value = Celular.trim();
                 document.getElementById("Fecha_Nacimientoe").value = Fecha_Nacimiento.trim();
-
+                document.getElementById("Id_cedulae").readOnly = true;
 
             }
 
@@ -77,10 +86,11 @@ for (let button of allButtons) {
                 let Nombre = tr.getElementsByClassName("Nombre")[0].innerHTML;
                 let Apellido1 = tr.getElementsByClassName("Apellido1")[0].innerHTML;
                 let Apellido2 = tr.getElementsByClassName("Apellido2")[0].innerHTML;
-                let NivelAcademico = tr.getElementsByClassName("Nivel_Academico")[0].innerHTML;
+                let NivelAcademico = tr.getElementsByClassName("Id_NivelAcademico")[0].innerHTML;
                 let Correo = tr.getElementsByClassName("Correo")[0].innerHTML;
                 let Celular = tr.getElementsByClassName("Celular")[0].innerHTML;
                 let Fecha_Nacimiento = tr.getElementsByClassName("Fecha_Nacimiento")[0].innerHTML;
+                let estado = tr.getElementsByClassName("Estado")[0].innerHTML;
 
 
                 // inicializar popup en ventana
@@ -102,7 +112,7 @@ for (let button of allButtons) {
                 document.getElementById("Correoel").value = Correo.trim();
                 document.getElementById("Celularel").value = Celular.trim();
                 document.getElementById("Fecha_Nacimientoel").value = Fecha_Nacimiento.trim();
-
+                document.getElementById("Estadoel").value = estado.trim();
 
                 //Hacer campos no editables al eliminar
 
@@ -112,11 +122,11 @@ for (let button of allButtons) {
                 document.getElementById("Nombreel").readOnly = true;
                 document.getElementById("Apellido1el").readOnly = true;
                 document.getElementById("Apellido2el").readOnly = true;
-                document.getElementById("Nivel_Academicoel").readOnly = true;
+                document.getElementById("Id_NivelAcademicoel").readOnly = true;
                 document.getElementById("Correoel").readOnly = true;
                 document.getElementById("Celularel").readOnly = true;
                 document.getElementById("Fecha_Nacimientoel").readOnly = true;
-
+                document.getElementById("Estadoel").readOnly = true; 
 
 
             }
