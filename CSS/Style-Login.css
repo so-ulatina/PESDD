@@ -1,4 +1,4 @@
-﻿
+
 /*
     Librerias
 */
@@ -27,7 +27,7 @@
 }
 
 body {
-    background: linear-gradient(to right, #e2e2e2, #242a2c);
+    background: #3e8d8d;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,6 +35,29 @@ body {
     height: 100vh;
 }
 
+
+header {
+    margin-top: 0;
+    width: 100%;
+    background: #fff;
+    padding: 50px;
+}
+
+
+.separator {
+    width: 0;
+    height: 0;
+    border-right: 100vw solid transparent;
+    border-bottom: 13.9vw solid #5cc4c3;
+    margin-top: 0;
+}
+
+
+footer {
+    height: 14%;
+    background: #5cc4c3;
+    position: relative;
+}
 
 /*
     -----------------------------------------------Inicio diseno container global -----------------------------------------------
@@ -44,13 +67,14 @@ body {
 .container {
     background-color: #fff;
     border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 5px 95px rgba(0, 0, 0, 0.35);
     position: relative;
     overflow: hidden;
     width: 900px;
     max-width: 100%;
     min-height: 600px;
     text-align: center;
+    margin-top: 30px;
 }
 
     .container p {
@@ -76,10 +100,10 @@ body {
         color: black;
         font-size: 12px;
         padding: 10px 45px;
-        border: 1px solid rgb(255, 106, 0, 0.3); /* Lineas del borde */
+        border: 1px solid #f16242; /* Lineas del borde */
         border-radius: 8px;
         font-weight: 600;
-        
+        background: #f16242;
         text-transform: uppercase;
         margin-top: 10px;
         cursor: pointer;
@@ -95,12 +119,24 @@ body {
 */
 
         .container button.btn-iniciar-sesion {
-            border: 1px solid #97d700; /* Lineas del borde */
+            border: 1px solid #f16242; /* Lineas del borde */
+            background: #f16242;
         }
 
         .container button.btn-salir {
-            border: 1px solid #97d700; /* Lineas del borde */
+            border: 1px solid #f16242; /* Lineas del borde */
+            background: #f16242;
         }
+
+
+            .container button.btn-salir:hover, .container button.btn-iniciar-sesion:hover { /* Funcionalidad hover para cambiar el color al pasar el cursor por el boton*/
+                
+                color: white;
+                border: 1px solid #3e8d8d; /* Lineas del borde */
+            }
+
+
+
 
     /*
     -----------------------------------------------Fin diseno global botones toggle-----------------------------------------------
@@ -222,7 +258,7 @@ body {
 .errorLogin {
     position: relative;
     width: 250px;
-    height: 40px;
+    height: 60px;
     margin-bottom:30px;
     color: var(--Color-letra-error);
     background-color: var(--Color-background-error);
@@ -259,49 +295,6 @@ body {
     }
 }
 
-
-/*
-    -----------------------------------------------Inicio diseno Iconos redes sociales-----------------------------------------------
-*/
-.icons-sociales {
-  
-    position: absolute;
-    bottom: 1%;
-    left:40%;
-    color: #ffffff; /*color global para texto,iconos */
-    width: 2%;
-    align-items: center;
-    justify-content: center;
-   display:flex;
-
-}
-
-
-
-
-.a-iconos {
-    width: 200px;
-    font-size: 1px; /*tamano de los iconos*/
-    color: black;
-    
-    margin: 50px;
-    font-size: 20px;
-}
-
-    .a-iconos i {
-        transition: all 0.3s;
-    }
-
-    .a-iconos:hover {
-        font-size: 30px; /* Icono aumenta tamano al hover*/
-        color: #97d700; /* Icono cambia color al hover*/
-    }
-
-
-/*
-    -----------------------------------------------Fin diseno Iconos redes sociales-----------------------------------------------
-*/
-
 .toggle-container {
     position: absolute;
     top: 0;
@@ -322,7 +315,7 @@ body {
 .toggle {
     
     height: 100%;
-    background: linear-gradient(to right, #242a2c, #e2e2e2);
+    background: #3e8d8d;
     color: #fff;
     position: relative;
     left: -100%;
@@ -384,6 +377,9 @@ body {
     transform: translateX(200%);
 }
 
+
+
+
 /*
     -----------------------------------------------Fin diseno Toggle bienvenidos Iniciar Sesion-----------------------------------------------
 */
@@ -404,8 +400,9 @@ body {
 }
 
     .boton:hover { /* Funcionalidad hover para cambiar el color al pasar el cursor por el boton*/
-        background-color: #97d700;
+        background-color: #3e8d8d;
         color: white;
+        border-color: #3e8d8d;
     }
 
 
