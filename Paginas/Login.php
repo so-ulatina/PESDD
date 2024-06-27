@@ -48,11 +48,11 @@ $_SESSION['sql1'] = "";
               <div >
                   
                   <h1 > Bienvenidos !!!</h1>
-                  <p>Departamento de Desarrollo Docente</p>
+                  <p>Departamento Desarrollo Docente</p>
               </div>
                 
                  <div class="image-logo">
-                     <img src="../Imagenes/Logo.png" id="logo" /> 
+                     <img src="../Imagenes/Logo.jpg" id="logo" /> 
                  </div>
                
                   
@@ -77,14 +77,14 @@ $_SESSION['sql1'] = "";
 <Form action="../SQLs/SQL-Login.php" method="post"> <!-- se declara post para que asi se ejecute al presionar el boton de submit -->
 
 <div class="image-logo">
-<img src="../Imagenes/Logo.png" id="logo" /> 
+<img src="../Imagenes/Logo.jpg" id="logo" /> 
 </div>
 
   <!--  Inicio mensaje datos incorrectos al hacer login   -->
 
                 <?php
                 if (isset($_SESSION['Error']) && $_SESSION['Error'] != '') {
-                    
+
                     ?>
                     
                 
@@ -100,7 +100,7 @@ $_SESSION['sql1'] = "";
 
 
 
-<h1 class="login-titulo">Iniciar Sesion <i class="bi bi-person-circle"></i></h1>
+<h1 class="login-titulo">Iniciar Sesi&oacuten <i class="bi bi-person-circle"></i></h1>
 
    
 
@@ -109,17 +109,17 @@ $_SESSION['sql1'] = "";
 
 
 
-<input type="email" placeholder="Correo" name="Correo"  value="luis23@ulatina.net">  <!-- agregar campo de usuario para que acepte valores -->
+<input type="email" placeholder="Correo" name="Correo"  value="luisadmin@ulatina.net">  <!-- agregar campo de usuario para que acepte valores -->
 
 </div>
 
 <div class="form-group"  >
-<input type="password" placeholder="Password" name="Password" value="123456789">  <!-- agregar campo de password para que acepte valores -->
+<input type="password" placeholder="Password" name="Password" value="Swaggswagg1">  <!-- agregar campo de password para que acepte valores -->
 </div>
 
 <div class="form-btn">
 
-    <button class="boton" type="submit" value="Ingresar" name="login"  >Iniciar Sesion</button>
+    <button class="boton" type="submit" value="Ingresar" name="login"  >Iniciar Sesi&oacuten</button>
 
 </div>
 
@@ -134,13 +134,13 @@ $_SESSION['sql1'] = "";
             <div class="toggle">
                 <div class="toggle-panel toggle-bienvenidos-salir">
                     <h1>Bienvenidos !!! </h1>
-                    <p>Sistema de administracion para el desarrollo docente</p>
+                    <p>Sistema de administracion Departamento Desarrollo Docente</p>
                     <button class="btn-salir" id="Salir">Salir</button>
                 </div>
                 <div class="toggle-panel toggle-bienvenidos-iniciar-sesion">
                     <h1>Hola,</h1>
                     <p>Inicia sesion para poder utilizar el sistema. </p>
-                    <button class="btn-iniciar-sesion" id="IniciarSesion1">Iniciar Sesion</button>
+                    <button class="btn-iniciar-sesion" id="IniciarSesion1">Iniciar Sesi&oacuten</button>
                 </div>
             </div>
         </div>
@@ -149,6 +149,25 @@ $_SESSION['sql1'] = "";
 
 
 </div>	
+
+    <div class="separator"></div>
+   
+
+    <footer>
+
+
+               
+              <div class="icons-sociales">
+                <a class="a-iconos" href="#"> <i class="bi bi-facebook"></i></a>
+                <a class="a-iconos" href="#"> <i class="bi bi-youtube"></i></a>
+                <a class="a-iconos" href="#"> <i class="bi bi-twitter"></i></a>  
+                <a class="a-iconos" href="#"> <i class="bi bi-instagram"></i></a>  
+                <a class="a-iconos" href="#"> <i class="bi bi-linkedin"></i></a> 
+                </div>
+
+
+</footer>
+
 
     <script src="../JavaScripts/JavaScript-Login.js"></script>
 
