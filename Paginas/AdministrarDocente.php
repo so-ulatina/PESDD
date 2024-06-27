@@ -18,7 +18,7 @@ $_SESSION['Nombre'];
       <!-- Declaracion variables-->
     <?php
     $titulo = "Docente";
-    
+    $_SESSION['Categoria'] = $titulo;
         
     ?>
 
@@ -34,166 +34,102 @@ $_SESSION['Nombre'];
 </head>
 
 <body >
+    
+      <header>
+                <nav >
+               
+                    <ul>
+               
+                  <li class="logo"><img src="../Imagenes/Logo.jpg" /></li>
+                  
+                    <li > <h2 class="titulo"> Administrar <?php echo $titulo; ?> </h2></li>
+     
+                    <li class="logout"> 
+                
+ <?php
 
+ switch ($_SESSION["Rol"]) {
+
+     case "Administrador":
+
+         ?> 
+       <a  href="../Paginas/IndiceAdmin.php" class="last-link" ><h3><span class="material-symbols-outlined">home</span> Inicio</h3></a> 
+        <?php
+        break;
+     case "Mantenimiento":
+
+         ?> 
+         <a  href="../Paginas/IndiceMant.php" class="last-link" ><h3><span class="material-symbols-outlined">home</span> Inicio</h3></a> 
+        <?php
+        break;
+     case "Consultor":
+
+         ?> 
+       <a  href="../Paginas/IndiceConsultor.php" class="last-link" ><h3><span class="material-symbols-outlined">home</span> Inicio</h3></a> 
+        <?php
+
+        break;
+     default:
+         $fields = "Usuario no tiene un rol asignado";
+         break;
+ }
+
+ ?> 
+
+    <a class="last-link" href="../SecureLogOut.php" ><h3> <span class="material-symbols-outlined">logout</span>Cerrar Sesi&oacuten</h3></a>
+</li>
+                     
+
+
+
+                </ul>
+                </nav>
+            </header>    
     
 
 
     <div class="container">
     
-     <!-- ----------------------------------Inicio de aside , barra iquierda ---------------------------------- -->
-    <div class="sidebar-global">
-        
-   
-        <aside>
-            
-            <div class="top">
-
-                  <div class="logo">
-                  <img src="../Imagenes/Logo.png" />
-                  </div>
-
-             </div>
-
-
-            <div class="sidebar">
-                
-
-                <?php
-
-                if($_SESSION["Role"] == "Admin"){
-                  
-                 ?>              
-                    <a  href="../Paginas/IndiceAdmin.php" >
-                
-                   <h3> <span class="material-symbols-outlined">home</span>Inicio</h3>
-                    
-                </a>
-
-                <?php
-
-                }elseif ($_SESSION["Role"] == "Mant") {
-                   
-                ?>
-                 
-                 <a  href="../Paginas/IndiceMant.php" >
-                
-                   <h3> <span class="material-symbols-outlined">home</span>Inicio</h3>
-                    
-                </a>
-
-                <?php
-
-                }else {
-                   ?> 
-                 <a  href="../Paginas/IndiceUsuario.php" >
-                
-                   <h3> <span class="material-symbols-outlined">home</span>Inicio</h3>
-                    
-                </a>
-
-
-                <?php
-                }
-
-                ?>
-
-
-
-
-               
-
-                
-
-                <a  href="#" >
-                
-                   <h3> <span class="material-symbols-outlined">info</span>Acerca</h3>
-                    
-                
-                </a>
-
-                <a  href="#" >
-                
-                   <h3> <span class="material-symbols-outlined">contacts</span> Contacto</h3>
-                   
-                
-                </a>
-
-
-                 <a class="last-link" href="../SecureLogOut.php" >
-                
-                   <h3> <span class="material-symbols-outlined">logout</span>Cerrar Sesion</h3>
-                    
-                
-                </a>
-
-
-
-            </div>
-
-        </aside>
     
-   
-    </div>
-     <!-- ----------------------------------Fin de aside , barra iquierda ---------------------------------- -->
-
-          <!-- ----------------------------------Inicio de main , centro pagina---------------------------------- -->
-
         
     <main>
     
 
 
-        
-            <div class="date">
-                <p id="date-container"></p>
-            </div>
-
-
-
-
-
         <div class="tabla-centro">
-
-
-
-            <h2> Administrar <?php echo $titulo; ?> </h2>
 
             <div class="tabla">
 
 
-               <div class="agregar-exportar-iconos">
-                   
-                       
-                       <a href="../Exportar.php"> <span class="material-symbols-outlined">ios_share </span> Exportar </a>
-                       
-                       
-                       <button onclick="agregar()" class="show-popup-agregar" ><span class="material-symbols-outlined">add </span>Agregar</button>
-                       
-                       
-                   
-                   </div>
+              <div class="agregar-exportar-iconos">
+   <a class="boton-Exportar" href="../Exportar.php"> <span class="material-symbols-outlined">ios_share </span></a>
+   <button onclick="agregar()" class="show-popup-agregar" ><span class="material-symbols-outlined">add </span></button>
+   </div>
                
                 
                 <form action="../SQLs/SQL-Docente.php" class="filtros" method="POST" >
                     <div class="filtrar1">
-                           <p> Filtrar por Nombre: </p>
+                           <p>Nombre: </p>
                        <input type="text" name="find1" />
                         
                      </div>
 
-                 
-                    <button class="btn-filtrar" type="submit" name="submitf" ><span class="material-symbols-outlined">search</span></button>
-                    <button class="btn-filtrar" type="submit" name="submitundo" ><span class="material-symbols-outlined">undo</span></button>
+                    <div class="filtrar1">
+                           <p>Estado: </p>
+                       <input type="text" name="find2" />
+                        
+                     </div>
 
-
-                 </form>
-
-
+                   <div class="filtrar-undo-iconos">
+<button  type="submit" name="submitf" ><span class="material-symbols-outlined">search</span></button>
+   <button  type="submit" name="submitundo" ><span class="material-symbols-outlined">undo</span></button>
+   </div>
+                    
                     <!--  Inicio mensaje Respuesta Agregar a la base de datos   -->
 
                 <?php
                 if (isset($_SESSION['resultado']) && $_SESSION['resultado'] != '') {
-                    
+
                     ?>
                     
                 
@@ -206,24 +142,28 @@ $_SESSION['Nombre'];
                 ?>
                 
                 <!--  Fin mensaje Respuesta Agregar a la base de datos   -->
+                 </form>
+
+
                 
                 
                
-   
-   <table id="tabla" class = "table">
+   <div class="tbl-scroll">  
+   <table id="tabla" class = "table" cellspacing="0">
       <thead>
           <tr>
-             <th>Id_cedula</th>
-             <th>Id_Docente</th>
-              <th>Id_carrera</th>
+             <th>Id c&eacutedula</th>
+             <th>Id Docente</th>
+              <th>Id carrera</th>
               <th>Nombre</th>
               <th>Apellido1</th>
               <th>Apellido2</th>
-              <th>Nivel_Academico</th>
+              <th>Id Nivel Acad&eacutemico</th>
               <th>Correo</th>
               <th>Celular</th>
-              <th>Fecha_Nacimiento</th>
-              <th>Accion</th>
+              <th>Fecha Nacimiento</th>
+              <th>Estado</th>
+              <th>Acci&oacuten</th>
          </tr>
 
       </thead>
@@ -240,11 +180,11 @@ $_SESSION['Nombre'];
 
                if($_SESSION['sql1']){
               $sql = $_SESSION['sql1'];
-
+              
                }else {
 
               $sql = "SELECT * FROM Docente";    // Si no hay un sql nuevo para buscar , entonces select *
-              
+              $_SESSION['sql2'] = $sql;
                }
 
           // Fin Validar si hay un sql nuevo para buscar
@@ -270,10 +210,11 @@ $_SESSION['Nombre'];
 <td  class="Nombre">  <?php echo $row["Nombre"]; ?> </td>
 <td  class="Apellido1">  <?php echo $row["Apellido1"]; ?> </td>
 <td  class="Apellido2">  <?php echo $row["Apellido2"]; ?> </td>
-<td  class="Nivel_Academico">  <?php echo $row["Nivel_Academico"]; ?> </td>
+<td  class="Id_NivelAcademico">  <?php echo $row["Id_NivelAcademico"]; ?> </td>
 <td  class="Correo">  <?php echo $row["Correo"]; ?> </td>
 <td  class="Celular">  <?php echo $row["Celular"]; ?> </td>
 <td  class="Fecha_Nacimiento">  <?php echo $row["Fecha_Nacimiento"]; ?> </td>
+<td  class="Estado">  <?php echo $row["Estado"]; ?> </td>
 
 
 
@@ -307,7 +248,7 @@ $_SESSION['Nombre'];
 
       </tbody>
    </table>
-
+       </div>
              </div>
 
           
@@ -326,47 +267,6 @@ $_SESSION['Nombre'];
 
 
 
-        <!-- ----------------------------------Inicio Top derecha---------------------------------- -->
-
-        <div class="right">
-
-
-
-            <div class="top">
-
-                <div class="perfil">
-                    
-                    <div class="info">
-                        <p> Hola , <b> <?php echo $_SESSION['Nombre']; ?> </b></p>
-                        
-                    </div>
-                
-
-                
-                <div class="perfil-foto">
-                    <span class="material-symbols-outlined">account_circle</span>
-                </div>
-                
-                </div>
-
-
-            </div>
-
-
-
-
-
-
-
-        </div>
-
-
-        <!-- ----------------------------------Fin Top derecha---------------------------------- -->
-
-
-
-
-        
               <!--  ----------------------- Inicio popup agregar ----------------------- -->
 
 
@@ -378,14 +278,17 @@ $_SESSION['Nombre'];
          
         <div class="instrucciones">
        
-             <img src="../Imagenes/Logo.png" id="logo" class="image-logo"/> 
+          
             
              
-                      <br /><br /><br />
-                      Instrucciones Generales:<br /><br />
-                      1-No dejar ningun campo en blanco.<br />
-                      2-Password tiene que ser de al menos 8 caracteres.<br />
-                      3-Utilizar el formato email@ulatina.net para el campo de correo.<br /><br /><br />
+                         <br /><br /><br />
+         Instrucciones Generales:<br /><br />
+         1-No dejar ningun campo en blanco.<br />
+         2-Utilizar el estado tipo Activo o Inactivo solamente.<br />
+         3-Por favor utilizar solamente las opciones que aparecen en la lista de opciones de Id Carrera y Id Nivel Acad&eacutemico.<br />
+         4-Por favor utilizar el formato AAAA-MM-DD en el campo de fecha de Nacimiento.<br />
+         5-Por favor utilizar el formato de ejemplo@ulatina.net para el campo de Correo.<br />
+         6-No utilizar espacios o guiones en el campo de Celular.<br />
              <div>
               <button onclick="agregarCerrar()" class="boton-cerrar"> Cerrar</button>  
              </div>
@@ -415,7 +318,7 @@ $_SESSION['Nombre'];
             
             <!-- Input para Id_cedula -->
             <div class="form-group">
-                <a class="sub">Id_cedula :</a>
+                <a class="sub">Id c&eacutedula :</a>
                 
                 <input type="text" class="form-control"  name="Id_cedula"  id="Id_cedula" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
@@ -424,17 +327,22 @@ $_SESSION['Nombre'];
 
             <!-- Input para Id_Docente-->
             <div class="form-group">
-                <a class="sub">Id_Docente:</a>
+                <a class="sub">Id Docente:</a>
                 
                 <input type="text" class="form-control" name="Id_Docente" id="Id_Docente" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required />
             </div>
+
+
+
+
+
 
 
              <!-- Input para id Id_carrera -->
             
             
              <div class="form-group">
-                <a class="sub">Id_carrera :</a>
+                <a class="sub">Id carrera :</a>
             
                  
                  <!--  ---------- Inicio Select para todas las carreras ----------   -->
@@ -447,7 +355,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM Carrera";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM Carrera WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
 
                    $result = mysqli_query($conn, $sql); //conexion con el sql
                  
@@ -461,7 +369,7 @@ $_SESSION['Nombre'];
 
 
 
-                            <option value="<?php echo $row["Id_Carrera"] ?>" id="<?php echo $row["Id_Carrera"] ?>" >  <?php echo $row["Id_Carrera"] ?> </option>
+                            <option  >  <?php echo $row["Id_Carrera"], "-", $row["Nombre"] ?> </option>
 
                       <?php
 
@@ -509,13 +417,67 @@ $_SESSION['Nombre'];
                 
             </div>
 
-             <!-- Input para Nivel_Academico-->
-            <div class="form-group">
-                <a class="sub">Nivel Academico:</a>
-                
-                <input type="text" class="form-control"  name="Nivel_Academico"  id="Nivel_Academico" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
+
+
+
+
+
+             
+             <!-- Input para id Id_NivelAcademico -->
+            
+            
+             <div class="form-group">
+                <a class="sub">Id Nivel Acad&eacutemico :</a>
+            
+                 
+                 <!--  ---------- Inicio Select para todas las carreras ----------   -->
+
+
+                  <select type="text"  class="form-control"  name="Id_NivelAcademico"  id="Id_NivelAcademico" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required>
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM nivel_academico WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 
+                 $result = mysqli_query($conn, $sql); //conexion con el sql
+                 
+                 if (!$result) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+
+                     while ($row = mysqli_fetch_assoc($result)) {   // recorrer cada linea agregandola a la tabla
+                         ?>
+
+
+
+                            <option value="<?php echo $row["Id_NivelAcademico"] ?>" >  <?php echo $row["Id_NivelAcademico"], "-", $row["Nombre"] ?> </option>
+
+                      <?php
+
+                     } // fin del while
+                 
+                 }
+
+
+
+
+                 ?>
+
+
+                  </select>
+
+                 <!--  ----------  Fin Select para todas las nivel_academico ----------   -->
+
                 
             </div>
+
+
+
+
 
              <!-- Input para Correo-->
             <div class="form-group">
@@ -535,19 +497,34 @@ $_SESSION['Nombre'];
 
              <!-- Input para id Fecha_Nacimiento-->
             <div class="form-group">
-                <a class="sub">Fecha_Nacimiento:</a>
+                <a class="sub">Fecha Nacimiento:</a>
                 
                 <input type="text" class="form-control"  name="Fecha_Nacimiento"  id="Fecha_Nacimiento" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
             </div>
 
+            
+                <!-- Input para Estado -->
+            
+            
+             <div class="form-group">
+                <a class="sub">Estado :</a>
+            
+                  <select type="text"  class="form-control"  name="Estado"  id="Estado" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required>
+
+                            <option  >Activo</option>
+                            <option  >Inactivo</option>
+                         
+                  </select>
+
+            </div>
            
 
-            <!-- Boton para Agregar  -->
+           <!-- Boton para Agregar  -->
             
-                
+                <div class="botonagregardiv">
                  <button  class="boton-agregar" type="submit" name="submita" value="Agregar" > Agregar</button>
-                
+                </div>
         </form>
                    
         
@@ -586,15 +563,18 @@ $_SESSION['Nombre'];
          
         <div class="instrucciones">
        
-             <img src="../Imagenes/Logo.png" id="logo" class="image-logo"/> 
+            
             
               
                   
-                      <br /><br /><br />
-                      Instrucciones Generales:<br /><br />
-                      1-No dejar ningun campo en blanco.<br />
-                      2-La fecha de nacimiento tiene que ser en el formato AAAA/MM/DD.<br />
-                      <br /><br /><br />
+                       <br /><br /><br />
+         Instrucciones Generales:<br /><br />
+         1-No dejar ningun campo en blanco.<br />
+         2-Utilizar el estado tipo Activo o Inactivo solamente.<br />
+         3-Por favor utilizar solamente las opciones que aparecen en la lista de opciones de Id Carrera y Id Nivel Acad&eacutemico.<br />
+         4-Por favor utilizar el formato AAAA-MM-DD en el campo de fecha de Nacimiento.<br />
+         5-Por favor utilizar el formato de ejemplo@ulatina.net para el campo de Correo.<br />
+         6-No utilizar espacios o guiones en el campo de Celular.<br />
              <div>
               <button onclick="editarCerrar()" class="boton-cerrar"> Cerrar</button>  
              </div>
@@ -625,7 +605,7 @@ $_SESSION['Nombre'];
             
               <!-- Input para Id_cedula -->
             <div class="form-group">
-                <a class="sub">Id_cedula :</a>
+                <a class="sub">Id c&eacutedula :</a>
                 
                 <input type="text" class="form-control"  name="Id_cedulae"  id="Id_cedulae" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
@@ -634,7 +614,7 @@ $_SESSION['Nombre'];
 
             <!-- Input para Id_Docente-->
             <div class="form-group">
-                <a class="sub">Id_Docente:</a>
+                <a class="sub">Id Docente:</a>
                 
                 <input type="text" class="form-control" name="Id_Docentee" id="Id_Docentee" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required />
             </div>
@@ -643,7 +623,7 @@ $_SESSION['Nombre'];
             
             
              <div class="form-group">
-                <a class="sub">Id_carrera :</a>
+                <a class="sub">Id carrera :</a>
             
                  
                  <!--  ---------- Inicio Select para todas las carreras ----------   -->
@@ -656,7 +636,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM Carrera";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM Carrera WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
@@ -670,7 +650,7 @@ $_SESSION['Nombre'];
 
 
 
-                            <option class="<?php echo $row["Id_Carrera"];?>" ><?php echo $row["Id_Carrera"], "-", $row["Nombre"]; ?> </option>
+                            <option class="<?php echo "Carrera-", $row["Id_Carrera"]; ?>">  <?php echo $row["Id_Carrera"], "-", $row["Nombre"]; ?> </option>
 
                       <?php
 
@@ -702,25 +682,77 @@ $_SESSION['Nombre'];
 
              <!-- Input para id Apellido1-->
             <div class="form-group">
-                <a class="sub">Apellido1:</a>
+                <a class="sub">Apellido 1:</a>
                 
                 <input type="text" class="form-control"  name="Apellido1e"  id="Apellido1e" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
             </div>
               <!-- Input para id Apellido1-->
             <div class="form-group">
-                <a class="sub">Apellido2:</a>
+                <a class="sub">Apellido 2:</a>
                 
                 <input type="text" class="form-control"  name="Apellido2e"  id="Apellido2e" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
               </div>
-             <!-- Input para Nivel_Academico-->
-            <div class="form-group">
-                <a class="sub">Nivel_Academico:</a>
-                
-                <input type="text" class="form-control"  name="Nivel_Academicoe"  id="Nivel_Academicoe" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
+
+
+
+
+             <!-- Input para id Id_NivelAcademico -->
+            
+            
+             <div class="form-group">
+                <a class="sub">Id Nivel Acad&eacutemico :</a>
+            
+                 
+                 <!--  ---------- Inicio Select para todas las carreras ----------   -->
+
+
+                  <select type="text"  class="form-control"  name="Id_NivelAcademicoe"  id="Id_NivelAcademicoe" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required>
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM nivel_academico WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 
+                 $result = mysqli_query($conn, $sql); //conexion con el sql
+                 
+                 if (!$result) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+
+                     while ($row = mysqli_fetch_assoc($result)) {   // recorrer cada linea agregandola a la tabla
+                         ?>
+
+
+
+                              <option class="<?php echo "NivelAcademico-", $row["Id_NivelAcademico"]; ?>">  <?php echo $row["Id_NivelAcademico"], "-", $row["Nombre"]; ?> </option>
+
+                      <?php
+
+                     } // fin del while
+                 
+                 }
+
+
+
+
+                 ?>
+
+
+                  </select>
+
+                 <!--  ----------  Fin Select para todas las nivel_academico ----------   -->
+
                 
             </div>
+
+
+
+
 
              <!-- Input para Correo-->
             <div class="form-group">
@@ -740,19 +772,34 @@ $_SESSION['Nombre'];
 
              <!-- Input para id Fecha_Nacimiento-->
             <div class="form-group">
-                <a class="sub">Fecha_Nacimiento:</a>
+                <a class="sub">Fecha Nacimiento:</a>
                 
                 <input type="text" class="form-control"  name="Fecha_Nacimientoe"  id="Fecha_Nacimientoe" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
             </div>
 
+
             
-            <!-- Boton para Actualizar  -->
+                <!-- Input para Estado -->
             
-                
-                 <button  class="boton-editar" type="submit" name="submited" value="Actualizar" > Actualizar</button>
-                
-                
+            
+             <div class="form-group">
+                <a class="sub">Estado :</a>
+            
+                  <select type="text"  class="form-control"  name="Estadoe"  id="Estadoe" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required>
+
+                            <option  >Activo</option>
+                            <option  >Inactivo</option>
+                           
+                  </select>
+
+            </div>
+            
+           <!-- Boton para Actualizar  -->
+            
+                <div class="botonagregardiv">
+                 <button  class="boton-editar" type="submit" name="submited" value="Actualizar" >Actualizar</button>
+                </div>
 
         </form>
                    
@@ -789,32 +836,6 @@ $_SESSION['Nombre'];
      <div class="popup-container-eliminar">
 
 
-         <!-- ----------------- Inicio Instrucciones --------------------- -->
-
-         
-        <div class="instrucciones">
-       
-             <img src="../Imagenes/Logo.png" id="logo" class="image-logo"/> 
-            
-              
-                  
-                     
-                      <br /><br /><br />
-                      Instrucciones Generales:<br /><br />
-                      1-No dejar ningun campo en blanco.<br />
-                      2-La fecha de nacimiento tiene que ser en el formato AAAA/MM/DD.<br />
-                      <br /><br /><br />
-             <div>
-              <button onclick="editarCerrar()" class="boton-cerrar"> Cerrar</button>  
-             </div>
-
-	     </div>
-
-
-
-
-         
-         <!-- ----------------- Fin Instrucciones --------------------- -->
 
                <div class="popup-eliminar">
 
@@ -831,7 +852,7 @@ $_SESSION['Nombre'];
             
               <!-- Input para Id_cedula -->
             <div class="form-group">
-                <a class="sub">Id_cedula :</a>
+                <a class="sub">Id c&eacutedula :</a>
                 
                 <input type="text" class="form-control"  name="Id_cedulael"  id="Id_cedulael" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
@@ -840,7 +861,7 @@ $_SESSION['Nombre'];
 
             <!-- Input para Id_Docente-->
             <div class="form-group">
-                <a class="sub">Id_Docente:</a>
+                <a class="sub">Id Docente:</a>
                 
                 <input type="text" class="form-control" name="Id_Docenteel" id="Id_Docenteel" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required />
             </div>
@@ -848,7 +869,7 @@ $_SESSION['Nombre'];
 
              <!-- Input para id Id_carrera -->
             <div class="form-group">
-                <a class="sub">Id_carrera :</a>
+                <a class="sub">Id carrera :</a>
                 
                 <input type="text" class="form-control"  name="Id_carrerael"  id="Id_carrerael" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
@@ -864,21 +885,21 @@ $_SESSION['Nombre'];
 
              <!-- Input para id Apellido1-->
             <div class="form-group">
-                <a class="sub">Apellido1:</a>
+                <a class="sub">Apellido 1:</a>
                 
                 <input type="text" class="form-control"  name="Apellido1el"  id="Apellido1el" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
             </div>
               <!-- Input para id Apellido1-->
             <div class="form-group">
-                <a class="sub">Apellido2:</a>
+                <a class="sub">Apellido 2:</a>
                 
                 <input type="text" class="form-control"  name="Apellido2el"  id="Apellido2el" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
              </div>
              <!-- Input para Nivel_Academico-->
             <div class="form-group">
-                <a class="sub">Nivel_Academico:</a>
+                <a class="sub">Nivel Acad&eacutemico:</a>
                 
                 <input type="text" class="form-control"  name="Nivel_Academicoel"  id="Nivel_Academicoel" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
@@ -902,18 +923,30 @@ $_SESSION['Nombre'];
 
              <!-- Input para id Fecha_Nacimiento-->
             <div class="form-group">
-                <a class="sub">Fecha_Nacimiento:</a>
+                <a class="sub">Fecha Nacimiento:</a>
                 
                 <input type="text" class="form-control"  name="Fecha_Nacimientoel"  id="Fecha_Nacimientoel" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
                 
             </div>
             
 
-            <!-- Boton para Eliminar  -->
             
-                
+                <!-- Input para Estado -->
+            
+            
+             <div class="form-group">
+                <a class="sub">Estado :</a>
+            
+                   <input type="text" class="form-control" name="Estadoel" id="Estadoel" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required />
+
+            </div>
+
+           <!-- Boton para Eliminar  -->
+            
+               <div class="botonesEliminar">
                  <button  class="boton-editar" type="submit" name="submite" value="Actualizar" > eliminar</button>
-                
+                 <button  onclick="editarCerrar()" type="button"> Cerrar</button> 
+                   </div>
                 
 
         </form>
@@ -954,7 +987,13 @@ $_SESSION['Nombre'];
 
     </div> <!-- Fin div Container-->
 
+    <div class="separator"></div>
+   
 
+    <footer>
+  
+         
+</footer>
    
 
     <!-- ------------ JavaScripts -----------------------  -->
