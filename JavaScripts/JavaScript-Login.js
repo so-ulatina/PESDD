@@ -1,4 +1,4 @@
-﻿const container = document.getElementById('container');
+const container = document.getElementById('container');
 const IniciarSesion1Btn = document.getElementById('IniciarSesion1');
 const SalirBtn = document.getElementById('Salir');
 let error = document.getElementById('error');
