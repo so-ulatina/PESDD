@@ -1,4 +1,4 @@
-﻿
+
 
 let allButtons = document.getElementsByClassName('boton-popup');
     
@@ -23,7 +23,7 @@ for (let button of allButtons) {
                 let nombre = tr.getElementsByClassName("Nombre")[0].innerHTML;
                 let IdFacultad = tr.getElementsByClassName("Id_Facultad")[0].innerHTML;
                 let Idsede = tr.getElementsByClassName("Id_sede")[0].innerHTML;
-                
+                let estado = tr.getElementsByClassName("Estado")[0].innerHTML;
 
                 // inicializar popup en ventana
 
@@ -36,7 +36,7 @@ for (let button of allButtons) {
 
                 document.getElementById("Id_Carrerae").value = IdCarrera.trim();
                 document.getElementById("Nombree").value = nombre.trim();
-
+                document.getElementById("Estadoe").value = estado.trim();
 
                 // obtener  la opcion seleccionada en el select por clase(nombre de la clase es el mismo id de carrera obtenido de la base de datos)
                 var fac = document.getElementsByClassName("Facultad-" + IdFacultad.trim());
@@ -46,7 +46,7 @@ for (let button of allButtons) {
                 // obtener  la opcion seleccionada en el select por clase(nombre de la clase es el mismo id de sede obtenido de la base de datos)
                 var sede = document.getElementsByClassName("Sede-" + Idsede.trim());
                 sede[0].selected = 'selected';
-
+                document.getElementById("Id_Carrerae").readOnly = true;
 
             }
 
@@ -64,7 +64,7 @@ for (let button of allButtons) {
                 let nombre = tr.getElementsByClassName("Nombre")[0].innerHTML;
                 let IdFacultad = tr.getElementsByClassName("Id_Facultad")[0].innerHTML;
                 let Idsede = tr.getElementsByClassName("Id_sede")[0].innerHTML;
-               
+                let estado = tr.getElementsByClassName("Estado")[0].innerHTML;
 
                 // inicializar popup en ventana
 
@@ -79,12 +79,14 @@ for (let button of allButtons) {
                 document.getElementById("Nombreel").value = nombre.trim();
                 document.getElementById("Id_Facultadel").value = IdFacultad.trim();
                 document.getElementById("Id_sedeel").value = Idsede.trim();
-               
+                document.getElementById("Estadoel").value = estado.trim();
+
+
                 document.getElementById("Id_Carrerael").readOnly = true;
                 document.getElementById("Nombreel").readOnly = true;
                 document.getElementById("Id_Facultadel").readOnly = true;
                 document.getElementById("Id_sedeel").readOnly = true;
-
+                document.getElementById("Estadoel").readOnly = true; 
 
                
 
