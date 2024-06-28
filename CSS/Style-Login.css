@@ -445,10 +445,10 @@ footer {
 
 
 
-.login-titulo {
+h1 {
     font-size: 30px;
     text-align: center;
-    color: #242a2c;
+    color: #3e8d8d;
     padding: 2px 2px;
     width: 100%;
 }
