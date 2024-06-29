@@ -21,8 +21,11 @@ for (let button of allButtons) {
 
                 let IdCarrera = tr.getElementsByClassName("Id_Carrera")[0].innerHTML;
                 let nombre = tr.getElementsByClassName("Nombre")[0].innerHTML;
-                let IdFacultad = tr.getElementsByClassName("Id_Facultad")[0].innerHTML;
-                let Idsede = tr.getElementsByClassName("Id_sede")[0].innerHTML;
+                let IdFacultad2 = tr.getElementsByClassName("Id_Facultad")[0].innerHTML;
+                let IdFacultad = (IdFacultad2.split("-")[0]);
+
+                let Idsede2 = tr.getElementsByClassName("Id_sede")[0].innerHTML;
+                let Idsede = (Idsede2.split("-")[0]).trim();
                 let estado = tr.getElementsByClassName("Estado")[0].innerHTML;
 
                 // inicializar popup en ventana
