@@ -201,8 +201,63 @@ $_SESSION['Nombre'];
                
 <td  class="Id_cursos_matriculados">  <?php echo $row["Id_cursos_matriculados"]; ?> </td>  
 <td  class="Id_cedula">  <?php echo $row["Id_cedula"]; ?> </td>
-<td  class="Id_cuatrimestre">  <?php echo $row["Id_cuatrimestre"]; ?> </td>
-<td  class="Id_curso">  <?php echo $row["Id_curso"]; ?> </td>
+
+
+
+
+
+<!--  ---------- Inicio obtener nombre para todas las cuatrimestres ----------   -->
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM cuatrimestre WHERE Id_Cuatrimestre = " . $row["Id_cuatrimestre"];
+
+                 $resultCuatrimestres = mysqli_query($conn, $sql); //conexion con el sql
+                 $rowCuatrimestres = mysqli_fetch_assoc($resultCuatrimestres);
+
+                 if (!$resultCuatrimestres) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+                     ?>
+
+                          <td  class="Id_cuatrimestre">  <?php echo $rowCuatrimestres["Id_Cuatrimestre"]."-". $rowCuatrimestres["Periodo"]."-". $rowCuatrimestres["Ano"]; ?> </td>
+
+                      <?php } ?>
+
+                 <!--  ----------  Fin Select para todas las cuatrimestres ----------   -->
+
+
+
+
+<!--  ---------- Inicio obtener nombre para todas las curso ----------   -->
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM curso WHERE Id_curso = " . $row["Id_curso"];
+
+                 $resultcurso = mysqli_query($conn, $sql); //conexion con el sql
+                 $rowcurso = mysqli_fetch_assoc($resultcurso);
+
+                 if (!$resultcurso) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+                     ?>
+
+                          <td  class="Id_curso">  <?php echo $rowcurso["Id_Curso"]."-". $rowcurso["Nombre"]; ?> </td>
+
+                      <?php } ?>
+
+                 <!--  ----------  Fin Select para todas las curso ----------   -->
+
+
 <td  class="Nota">  <?php echo $row["Nota"]; ?> </td>
 <td  class="Estado">  <?php echo $row["Estado"]; ?> </td>
 
@@ -596,7 +651,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM Docente WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM Docente";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
@@ -610,7 +665,7 @@ $_SESSION['Nombre'];
 
 
 
-                            <option class=" <?php echo "Cedula-",$row["Id_cedula"]; ?>">  <?php echo $row["Id_cedula"], "-", $row["Nombre"], "-", $row["Appelido1"], "-", $row["Apellido2"]; ?> </option>
+                            <option class=" <?php echo "Cedula-",$row["Id_cedula"]; ?>">  <?php echo $row["Id_cedula"], "-", $row["Nombre"], "-", $row["Apellido1"], "-", $row["Apellido2"]; ?> </option>
 
                       <?php
 
@@ -648,7 +703,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM Cuatrimestre WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM Cuatrimestre";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
@@ -703,7 +758,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM Curso WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM Curso";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
