@@ -281,7 +281,7 @@ $_SESSION['Nombre'];
 
 
 
-<!--  ---------- Inicio obtener nombre para todas las certificado ----------   -->
+<!--  ---------- Inicio obtener nombre para todas las administrador ----------   -->
 
                  <?php
 
@@ -303,7 +303,7 @@ $_SESSION['Nombre'];
 
                       <?php } ?>
 
-<!--  ----------  Fin Select para todas las certificado ----------   -->
+<!--  ----------  Fin Select para todas las administrador ----------   -->
 
 
 
@@ -963,8 +963,8 @@ $_SESSION['Nombre'];
 
 
 
-                            <option class="<?php echo "Administrador-", $row["Id_administrador"], "-", $row["Nombre"]; ?>">  <?php echo  $row["Id_administrador"], "-", $row["Nombre"]; ?> </option>
-
+                            <option class="<?php echo "Administrador-", $row["Id_administrador"]; ?>">  <?php echo  $row["Id_administrador"], "-", $row["Nombre"]; ?> </option>
+                            
                       <?php
 
                      } // fin del while
