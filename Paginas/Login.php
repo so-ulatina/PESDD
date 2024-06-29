@@ -109,12 +109,12 @@ $_SESSION['sql1'] = "";
 
 
 
-<input type="email" placeholder="Correo" name="Correo"  value="luisadmin@ulatina.net">  <!-- agregar campo de usuario para que acepte valores -->
+<input type="email" placeholder="Correo" name="Correo"  value="">  <!-- agregar campo de usuario para que acepte valores -->
 
 </div>
 
 <div class="form-group"  >
-<input type="password" placeholder="Password" name="Password" value="Swaggswagg1">  <!-- agregar campo de password para que acepte valores -->
+<input type="password" placeholder="Password" name="Password" value="">  <!-- agregar campo de password para que acepte valores -->
 </div>
 
 <div class="form-btn">
