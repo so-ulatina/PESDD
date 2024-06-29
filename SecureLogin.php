@@ -1,3 +1,3 @@
 <?php
 session_start();
-if(!$_SESSION['Correo']){header('Location: Login.php');}
+if(!$_SESSION['Correo']){header('Location: ../Paginas/Login.php');}
