@@ -203,12 +203,61 @@ $_SESSION['Nombre'];
                
 <td  class="Id_Carrera">  <?php echo $row["Id_Carrera"]; ?> </td>  
 <td  class="Nombre">  <?php echo $row["Nombre"]; ?> </td>
-<td  class="Id_Facultad">  <?php echo $row["Id_Facultad"]; ?> </td>
-<td  class="Id_sede">  <?php echo $row["Id_sede"]; ?> </td>
+
+
+
+                <!--  ---------- Inicio obtener nombre para todas las facultades ----------   -->
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM Facultad WHERE Id_Facultad = ". $row["Id_Facultad"];    
+         
+                 $resultFacultad = mysqli_query($conn, $sql); //conexion con el sql
+                 $rowfacultades = mysqli_fetch_assoc($resultFacultad);
+
+                 if (!$resultFacultad) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+                         ?>
+
+                            <td  class="Id_Facultad"> <?php echo $rowfacultades["Id_Facultad"], "-", $rowfacultades["Nombre"]; ?> </td>
+
+                      <?php } ?>
+
+                 <!--  ----------  Fin Select para todas las Facultades ----------   -->
+
+
+
+
+              <!--  ---------- Inicio obtener nombre para todas las sedes ----------   -->
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM sede WHERE Id_sede = " . $row["Id_sede"];
+
+                 $resultsedes = mysqli_query($conn, $sql); //conexion con el sql
+                 $rowsedes = mysqli_fetch_assoc($resultsedes);
+
+                 if (!$resultsedes) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+                     ?>
+
+                           <td  class="Id_sede">  <?php echo $rowsedes["Id_sede"]."-". $rowsedes["Nombre"]; ?> </td>
+
+                      <?php } ?>
+
+                 <!--  ----------  Fin Select para todas las sedes ----------   -->
+
 <td  class="Estado">  <?php echo $row["Estado"]; ?> </td>
-
-
-
 
                <td> 
                     <button  type = "button" value = "Editar" class = "boton-popup"  ><span class="material-symbols-outlined"> edit </span></button>
@@ -548,7 +597,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM Facultad WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM Facultad ";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
@@ -603,7 +652,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM Sede WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM Sede";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
