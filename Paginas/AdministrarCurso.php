@@ -203,10 +203,111 @@ $_SESSION['Nombre'];
 <td  class="Id_Curso">  <?php echo $row["Id_Curso"]; ?> </td>  
 <td  class="Nombre">  <?php echo $row["Nombre"]; ?> </td>
 <td  class="Horas">  <?php echo $row["Horas"]; ?> </td>
-<td  class="Id_Categoria">  <?php echo $row["Id_Categoria"]; ?> </td>
-<td  class="Id_Modalidad">  <?php echo $row["Id_Modalidad"]; ?> </td>
-<td  class="Id_certificado">  <?php echo $row["Id_certificado"]; ?> </td>
-<td  class="Id_administrador">  <?php echo $row["Id_administrador"]; ?> </td>
+
+
+<!--  ---------- Inicio obtener nombre para todas las categorias ----------   -->
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM categoria WHERE Id_categoria = " . $row["Id_Categoria"];
+
+                 $resultcategoria = mysqli_query($conn, $sql); //conexion con el sql
+                 $rowCategoria = mysqli_fetch_assoc($resultcategoria);
+
+                 if (!$resultcategoria) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+                     ?>
+
+                           <td  class="Id_Categoria">  <?php echo $rowCategoria["Id_categoria"]."-". $rowCategoria["Nombre"]; ?> </td>
+
+                      <?php } ?>
+
+                 <!--  ----------  Fin Select para todas las categorias ----------   -->
+
+
+<!--  ---------- Inicio obtener nombre para todas las modalidad ----------   -->
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM modalidad WHERE Id_modalidad  = " . $row["Id_Modalidad"];
+
+                 $resultmodalidad = mysqli_query($conn, $sql); //conexion con el sql
+                 $rowModalidad = mysqli_fetch_assoc($resultmodalidad);
+
+                 if (!$resultmodalidad) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+                     ?>
+
+                          <td  class="Id_Modalidad">  <?php echo $rowModalidad["Id_modalidad"]."-". $rowModalidad["Descripcion"]; ?> </td>
+
+                      <?php } ?>
+
+                 <!--  ----------  Fin Select para todas las modalidad ----------   -->
+
+
+<!--  ---------- Inicio obtener nombre para todas las certificado ----------   -->
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM certificado WHERE Id_certificado  = " . $row["Id_certificado"];
+
+                 $resultCertificado = mysqli_query($conn, $sql); //conexion con el sql
+                 $rowCertificado = mysqli_fetch_assoc($resultCertificado);
+
+                 if (!$resultCertificado) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+                     ?>
+
+                         <td  class="Id_certificado">  <?php echo $rowCertificado["Id_certificado"]."-". $rowCertificado["Nombre"]; ?> </td>
+
+                      <?php } ?>
+
+<!--  ----------  Fin Select para todas las certificado ----------   -->
+
+
+
+<!--  ---------- Inicio obtener nombre para todas las certificado ----------   -->
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM administrador WHERE Id_administrador  = " . $row["Id_administrador"];
+
+                 $resultAdministrador = mysqli_query($conn, $sql); //conexion con el sql
+                 $rowAdministrador = mysqli_fetch_assoc($resultAdministrador);
+
+                 if (!$resultAdministrador) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+                     ?>
+
+                        <td  class="Id_administrador">  <?php echo $rowAdministrador["Id_administrador"]."-". $rowAdministrador["Nombre"]; ?> </td>
+
+                      <?php } ?>
+
+<!--  ----------  Fin Select para todas las certificado ----------   -->
+
+
+
+
 <td  class="Estado">  <?php echo $row["Estado"]; ?> </td>
                <td> 
                     <button  type = "button" value = "Editar" class = "boton-popup"  ><span class="material-symbols-outlined"> edit </span></button>
@@ -682,7 +783,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM Categoria WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM Categoria";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
@@ -737,7 +838,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM modalidad WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM modalidad";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
@@ -793,7 +894,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM Certificado WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM Certificado";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
@@ -848,7 +949,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM Administrador WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM Administrador";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
