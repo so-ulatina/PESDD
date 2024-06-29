@@ -206,27 +206,75 @@ $_SESSION['Nombre'];
                
 <td  class="Id_cedula">  <?php echo $row["Id_cedula"]; ?> </td>  
 <td  class="Id_Docente">  <?php echo $row["Id_Docente"]; ?> </td>
-<td  class="Id_carrera">  <?php echo $row["Id_carrera"]; ?> </td>
+
+
+
+                <!--  ---------- Inicio obtener nombre para todas las carreras ----------   -->
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM carrera WHERE Id_carrera = " . $row["Id_carrera"];
+
+                 $resultCarreras = mysqli_query($conn, $sql); //conexion con el sql
+                 $rowCarreras = mysqli_fetch_assoc($resultCarreras);
+
+                 if (!$resultCarreras) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+                     ?>
+
+                           <td  class="Id_carrera">  <?php echo $rowCarreras["Id_Carrera"]."-". $rowCarreras["Nombre"]; ?> </td>
+
+                      <?php } ?>
+
+                 <!--  ----------  Fin Select para todas las carreras ----------   -->
+
+
+
 <td  class="Nombre">  <?php echo $row["Nombre"]; ?> </td>
 <td  class="Apellido1">  <?php echo $row["Apellido1"]; ?> </td>
 <td  class="Apellido2">  <?php echo $row["Apellido2"]; ?> </td>
-<td  class="Id_NivelAcademico">  <?php echo $row["Id_NivelAcademico"]; ?> </td>
+
+
+
+  <!--  ---------- Inicio obtener nombre para todas las Nivel Academico ----------   -->
+
+                 <?php
+
+                 require_once "../ConexionBaseDatos/Conexion.php";
+
+
+                 $sql = "SELECT * FROM nivel_academico WHERE Id_NivelAcademico = " . $row["Id_NivelAcademico"];
+
+                 $resultNivelAcademico = mysqli_query($conn, $sql); //conexion con el sql
+                 $rowNivelAcademico = mysqli_fetch_assoc($resultNivelAcademico);
+
+                 if (!$resultNivelAcademico) {
+                     die("Consulta a la base de datos fallo");
+                 } else {
+
+                     ?>
+
+                           <td  class="Id_NivelAcademico">  <?php echo $rowNivelAcademico["Id_NivelAcademico"]."-". $rowNivelAcademico["Nombre"]; ?> </td>
+
+                      <?php } ?>
+
+                 <!--  ----------  Fin Select para todas las Nivel Academico ----------   -->
+
 <td  class="Correo">  <?php echo $row["Correo"]; ?> </td>
 <td  class="Celular">  <?php echo $row["Celular"]; ?> </td>
 <td  class="Fecha_Nacimiento">  <?php echo $row["Fecha_Nacimiento"]; ?> </td>
 <td  class="Estado">  <?php echo $row["Estado"]; ?> </td>
-
-
-
 
                <td> 
                     <button  type = "button" value = "Editar" class = "boton-popup"  ><span class="material-symbols-outlined"> edit </span></button>
                     <button type = "button" value = "Eliminar" class = "boton-popup"  ><span class="material-symbols-outlined">delete</span></button>
                </td>
 
-            
-                 
-             
          </tr>
          
               <?php
@@ -636,7 +684,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM Carrera WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM Carrera";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
@@ -715,7 +763,7 @@ $_SESSION['Nombre'];
                  require_once "../ConexionBaseDatos/Conexion.php";
 
 
-                 $sql = "SELECT * FROM nivel_academico WHERE Estado = 'Activo'";    // Si no hay un sql nuevo para buscar , entonces select *
+                 $sql = "SELECT * FROM nivel_academico";    // Si no hay un sql nuevo para buscar , entonces select *
                  
                  $result = mysqli_query($conn, $sql); //conexion con el sql
                  
