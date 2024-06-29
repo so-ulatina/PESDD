@@ -2,7 +2,7 @@
 
 <?php
 use MongoDB\Driver\Session;
-//include ('../SecureLogin.php');
+include ('../SecureLogin.php');
 
 
 session_start();
