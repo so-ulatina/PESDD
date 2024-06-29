@@ -1,4 +1,4 @@
-﻿
+
 
 let allButtons = document.getElementsByClassName('boton-popup');
     
