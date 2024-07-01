@@ -97,12 +97,12 @@ $_SESSION['Nombre'];
 <footer>
 
 
-              <div class="icons-sociales">
-                <a class="a-iconos" href="#"> <i class="bi bi-facebook"></i></a>
-                <a class="a-iconos" href="#"> <i class="bi bi-youtube"></i></a>
-                <a class="a-iconos" href="#"> <i class="bi bi-twitter"></i></a>  
-                <a class="a-iconos" href="#"> <i class="bi bi-instagram"></i></a>  
-                <a class="a-iconos" href="#"> <i class="bi bi-linkedin"></i></a> 
+                 <div class="icons-sociales">
+                <a class="a-iconos" href="https://www.facebook.com/UniversidadLatinadeCostaRica/"> <i class="bi bi-facebook"></i></a>
+                <a class="a-iconos" href="https://www.youtube.com/user/ULatinaTV"> <i class="bi bi-youtube"></i></a>
+                <a class="a-iconos" href="https://x.com/i/flow/login?redirect_after_login=%2FULatinadeCR"> <i class="bi bi-twitter"></i></a>  
+                <a class="a-iconos" href="https://www.instagram.com/ulatina_cr/"> <i class="bi bi-instagram"></i></a>  
+                <a class="a-iconos" href="https://cr.linkedin.com/school/ulatina/"> <i class="bi bi-linkedin"></i></a> 
                 </div>
 
 </footer>
