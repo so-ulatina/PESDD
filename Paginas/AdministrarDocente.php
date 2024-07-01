@@ -4,7 +4,9 @@
 use MongoDB\Driver\Session;
 include ('../SecureLogin.php');
 
-
+if (!$_SESSION) {
+    session_start();
+}
 
 $_SESSION['Nombre'];
 
