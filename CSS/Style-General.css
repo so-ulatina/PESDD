@@ -5,11 +5,7 @@
     /* -----------------Inicio Declaracion variables colores ----------------- */
     /* ----------  Diseno Fecha/hora ---------- */
 
-    --border-radius-fecha: 10px;
-    /* ----------  Diseno tabla ---------- */
-
-    --color-letra-table-row: rgb(10, 10, 10);
-    --color-botones-tabla: #242a2c;
+    
     /* Diseno de letra bienvenida y filtrar por */
 
     --color-letra-filtrar-bienvenida: #242a2c;
@@ -22,19 +18,8 @@
     --color-background-containers: #fff;
     --color-background: #e2e2e2; /* Color del background completo*/
     --radius-global: 5px;
-    /* Title Side bar*/
-
-    --color-sidebar-dropdown-title-submenu-hover: rgba(132,139,200,0.18);
-    --color-sidebar-dropdown-title-background: #242a2c;
-    --color-sibebar-dropdown-title-font: #fff;
-    /* Submenu side bar*/
-
-    --color-sidebar-dropdown-submenu-background: #242a2c;
-    --color-sibebar-dropdown-submenu-font: #fff;
-    --color-sidebar-dropdown-submenu-hover: rgba(132,139,200,0.18);
-    /* ----------  Diseno popup ---------- */
-    --color-background-button-popup: rgb(255, 106, 0, 0.6);
-    --color-popup-checkbox: #242a2c;
+    
+   
     /* ----------  Diseno msj sql ---------- */
 
     --color-background-mensaje-sql-exitoso: #38ac81;
@@ -43,8 +28,6 @@
     --color-letra-mensaje-sql-error: #242a2c;
     /* -----------------Fin Declaracion variables colores ----------------- */
 }
-
-
 
 * {
     margin: 0;
@@ -61,7 +44,7 @@
 body, html {
     width: 100vw;
     font-family: Montserrat,sans-serif;
-    font-size: 14px;
+    
     height:100%;
     background: #3e8d8d;
 }
@@ -527,18 +510,8 @@ main table tbody td, main table thead th {
 
     /* ----------------------- Fin estilo de la tabla ----------------------- */
     /* -------------------- Fin Main,centro pagina-------------------*/
-    /* ----------------------- Inicio top derecha----------------------- */
-   
-
-       
-
-
-
-/* ----------------------- Fin top derecha----------------------- */
-
-
-
-/* ----------------------- Inicio popup edit ----------------------- */
+  
+/* ----------------------- Inicio popup----------------------- */
 
 
 /*  ---------------------- Inicio Instrucciones ------------------  */
@@ -548,7 +521,7 @@ main table tbody td, main table thead th {
     position: relative;
     background: var(--color-background-containers);
     border-radius: 15px 0px 0px 15px;
-    width: 400px;
+    width: 500px;
     text-align: left;
     height: 100%;
     padding: 2%;
@@ -582,14 +555,14 @@ main table tbody td, main table thead th {
 
 .popup-container-agregar, .popup-container-editar, .popup-container-eliminar {
     position: absolute;
-    width: 70%; /*width para el form */
+    width: 80%; /*width para el form */
     height: 74%; /*height para el form */
 
     justify-content: center;
     align-items: center;
     opacity: 0;
     pointer-events: none;
-    margin-left: 10%;
+    margin-left: 6%;
     margin-right: 23rem;
     margin-top: 4%;
     display: flex;
@@ -631,7 +604,7 @@ main table tbody td, main table thead th {
     border-radius: 0px 15px 15px 0px;
     text-align: left;
     display: flex;
-    width: 430px;
+    
     height: 100%;
 }
 
@@ -639,7 +612,7 @@ main table tbody td, main table thead th {
 
 .form-group {
     position: relative;
-    width: 300px;
+    width: 400px;
     height: auto;
     margin-bottom: 20px; /*espacio entre cada Li*/
     align-items: center;
@@ -681,6 +654,10 @@ main table tbody td, main table thead th {
         cursor: pointer;
     }
 
+.form-group .sub {
+    font-size:18px;
+}
+
 .botonagregardiv {
     width: 100%;
 
@@ -718,6 +695,10 @@ main table tbody td, main table thead th {
 
 .form-control {
     text-align: center;
+}
+
+.form-group .form-control  {
+    font-size: 18px;
 }
 
 
