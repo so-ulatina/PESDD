@@ -100,7 +100,7 @@ $_SESSION['sql1'] = "";
 
 
 
-<h1 class="login-titulo">Iniciar Sesi&oacuten <i class="bi bi-person-circle"></i></h1>
+<h1 >Iniciar Sesi&oacuten <i class="bi bi-person-circle"></i></h1>
 
    
 
@@ -109,12 +109,12 @@ $_SESSION['sql1'] = "";
 
 
 
-<input type="email" placeholder="Correo" name="Correo"  value="">  <!-- agregar campo de usuario para que acepte valores -->
+<input type="email" placeholder="Correo" name="Correo" >  <!-- agregar campo de usuario para que acepte valores -->
 
 </div>
 
 <div class="form-group"  >
-<input type="password" placeholder="Password" name="Password" value="">  <!-- agregar campo de password para que acepte valores -->
+<input type="password" placeholder="Password" name="Password" >  <!-- agregar campo de password para que acepte valores -->
 </div>
 
 <div class="form-btn">
@@ -139,7 +139,7 @@ $_SESSION['sql1'] = "";
                 </div>
                 <div class="toggle-panel toggle-bienvenidos-iniciar-sesion">
                     <h1>Hola,</h1>
-                    <p>Inicia sesion para poder utilizar el sistema. </p>
+                    <p>Inicia Sesi&oacuten para poder utilizar el sistema. </p>
                     <button class="btn-iniciar-sesion" id="IniciarSesion1">Iniciar Sesi&oacuten</button>
                 </div>
             </div>
@@ -167,6 +167,7 @@ $_SESSION['sql1'] = "";
 
 
 </footer>
+
 
     <script src="../JavaScripts/JavaScript-Login.js"></script>
 
