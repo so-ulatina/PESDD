@@ -1,6 +1,6 @@
 <?php
 
-$hostNombre="10.17.0.171";
+$hostNombre="localhost";
 $dbUsuario ="Admin_Desarrollo_Docente";
 $dbPassword ="Desarrollo_2024";
 $dbName= "desarrollo_docentes";
