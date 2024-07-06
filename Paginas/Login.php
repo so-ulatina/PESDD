@@ -168,7 +168,6 @@ $_SESSION['sql1'] = "";
 
 </footer>
 
-
     <script src="../JavaScripts/JavaScript-Login.js"></script>
 
 </body>
