@@ -55,14 +55,10 @@ $_SESSION['sql1'] = "";
                      <img src="../Imagenes/Logo.jpg" id="logo" /> 
                  </div>
                
-                  
-                <div class="icons-sociales">
-                <a class="a-iconos" href="#"> <i class="bi bi-facebook"></i></a>
-                <a class="a-iconos" href="#"> <i class="bi bi-youtube"></i></a>
-                <a class="a-iconos" href="#"> <i class="bi bi-twitter"></i></a>  
-                <a class="a-iconos" href="#"> <i class="bi bi-instagram"></i></a>  
-                <a class="a-iconos" href="#"> <i class="bi bi-linkedin"></i></a> 
-                </div>
+                  <div >
+                     <img src="../Imagenes/personajes.png" /> 
+                 </div>
+               
               </form>
                 
            
