@@ -75,6 +75,7 @@ footer {
     min-height: 600px;
     text-align: center;
     margin-top: 30px;
+   
 }
 
     .container p {
@@ -297,19 +298,20 @@ footer {
 
 .toggle-container {
     position: absolute;
-    top: 0;
+    top: 9px;
+    bottom: 5px;
     left: 50%;
-    width: 50%;                                           /* Configuracion antes del toggle*/
-    height: 100%;
+    width: 48.5%; /* Configuracion antes del toggle*/
+    height: 97%;
     overflow: hidden;
     transition: all 0.6s ease-in-out;
-    border-radius: 150px 150px 150px 150px;
+    border-radius: 70px 70px 70px 70px;
     z-index: 1000;
 }
 
 .container.active .toggle-container {
     transform: translateX(-100%);
-    border-radius: 150px 150px 150px 150px;              /* Configuracion despues del toggle*/
+    border-radius: 70px 70px 70px 70px; /* Configuracion despues del toggle*/
 }
 
 .toggle {
@@ -369,8 +371,9 @@ footer {
 */
 
 .toggle-bienvenidos-iniciar-sesion {
-    right: 0;
+    right: 6.6px;
     transform: translateX(0);
+
 }
 
 .container.active .toggle-bienvenidos-iniciar-sesion {
