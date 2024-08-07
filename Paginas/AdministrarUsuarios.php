@@ -4,8 +4,10 @@
 use MongoDB\Driver\Session;
 include ('../SecureLogin.php');
 
+if (!$_SESSION){
+    session_start();
+}
 
-session_start();
 $_SESSION['Nombre'];
 
 ?>
@@ -161,7 +163,6 @@ $_SESSION['Nombre'];
   <th>Apellido 1</th>
   <th>Apellido 2</th>
   <th>Correo</th>
-  <th>Password</th>
   <th>Rol</th>
   <th>Estado</th>
           <th >Acci&oacuten</th>
@@ -211,7 +212,6 @@ $_SESSION['Nombre'];
 <td  class="Apellido1" >  <?php echo $row["Apellido1"]; ?> </td>
 <td   class="Apellido2" >  <?php echo $row["Apellido2"]; ?> </td>
 <td  class="Correo">  <?php echo $row["Correo"]; ?> </td>
-<td  class="Password">  <?php echo $row["Password"]; ?> </td>
 <td  class="Rol">  <?php echo $row["Rol"]; ?> </td>
 <td  class="Estado">  <?php echo $row["Estado"]; ?> </td>
 
@@ -439,6 +439,7 @@ $_SESSION['Nombre'];
          2-Utilizar el estado tipo Activo o Inactivo solamente.<br />
          3-Por favor utilizar solamente las opciones que aparecen en la lista de opciones de Rol.<br />
          4-Por favor utilizar el formato de ejemplo@ulatina.net para el campo de Correo.<br />
+         5-Si se necesita cambiar la Contrase&ntildea por favor agregarla en el campo llamado Contrase&ntildea,si no se ocupa cambiar por favor dejar el campo en blanco.<br />
              <div>
               <button onclick="editarCerrar()" class="boton-cerrar"> Cerrar</button>  
              </div>
@@ -502,17 +503,19 @@ $_SESSION['Nombre'];
                 <input type="text" class="form-control" name="Apellido2e"  id="Apellido2e" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required />
             </div>
 
-            <!-- Input para Password -->
-            <div class="form-group">
-                <a class="sub">Contrase&ntildea:</a>
-                <input type="password" class="form-control" name="Passworde" id="Passworde" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
-            </div>
-
              <!-- Input para Correo -->
             <div class="form-group">
                 <a class="sub">Correo:</a>
                 <input type="email" class="form-control" name="Correoe" id="Correoe" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
             </div>
+
+
+             <!-- Input para Password -->
+            <div class="form-group">
+                <a class="sub">Contrase&ntildea:</a>
+                <input type="password" class="form-control" name="Passworde" id="Passworde" oninput="setCustomValidity('')" />
+            </div>
+
 
               <!-- Input para Rol -->
             
@@ -632,12 +635,6 @@ $_SESSION['Nombre'];
             <div class="form-group">
                 <a class="sub">Segundo Apellido:</a>
                 <input   type="text" class="form-control" name="Apellido2el"   id="Apellido2el" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
-            </div>
-
-            <!-- Input para Password -->
-            <div class="form-group">
-                <a class="sub">Contrase&ntildea:</a>
-                <input  type="password" class="form-control" name="Passwordel" id="Passwordel" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required  />
             </div>
 
              <!-- Input para Correo -->
