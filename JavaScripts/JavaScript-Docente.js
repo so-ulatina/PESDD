@@ -1,5 +1,6 @@
 
 
+
 let allButtons = document.getElementsByClassName('boton-popup');
     
 
@@ -21,11 +22,15 @@ for (let button of allButtons) {
 
                 let Idcedula = tr.getElementsByClassName("Id_cedula")[0].innerHTML;
                 let IdDocente = tr.getElementsByClassName("Id_Docente")[0].innerHTML;
-                let Idcarrera = tr.getElementsByClassName("Id_carrera")[0].innerHTML;
+                let Idcarrera2 = tr.getElementsByClassName("Id_carrera")[0].innerHTML;
+                let Idcarrera = (Idcarrera2.split("-")[0]);
+
                 let Nombre = tr.getElementsByClassName("Nombre")[0].innerHTML;
                 let Apellido1 = tr.getElementsByClassName("Apellido1")[0].innerHTML;
                 let Apellido2 = tr.getElementsByClassName("Apellido2")[0].innerHTML;
-                let NivelAcademico = tr.getElementsByClassName("Id_NivelAcademico")[0].innerHTML;
+                let NivelAcademico2 = tr.getElementsByClassName("Id_NivelAcademico")[0].innerHTML;
+                let NivelAcademico = (NivelAcademico2.split("-")[0]);
+
                 let Correo = tr.getElementsByClassName("Correo")[0].innerHTML;
                 let Celular = tr.getElementsByClassName("Celular")[0].innerHTML;
                 let Fecha_Nacimiento = tr.getElementsByClassName("Fecha_Nacimiento")[0].innerHTML;
