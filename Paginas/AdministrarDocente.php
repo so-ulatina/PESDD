@@ -679,7 +679,7 @@ $_SESSION['Nombre'];
                  <!--  ---------- Inicio Select para todas las carreras ----------   -->
 
 
-                  <select name="Id_Carrerae"  id="Id_Carrerae" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required>
+                  <select type="text"  class="form-control" name="Id_Carrerae"  id="Id_Carrerae" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required>
 
                  <?php
 
@@ -701,7 +701,7 @@ $_SESSION['Nombre'];
 
 
                             <option class="<?php echo "Carrera-", $row["Id_Carrera"]; ?>">  <?php echo $row["Id_Carrera"], "-", $row["Nombre"]; ?> </option>
-
+                      
                       <?php
 
                      } // fin del while
@@ -1066,4 +1066,3 @@ $_SESSION['Nombre'];
 
 
 </html>
-
