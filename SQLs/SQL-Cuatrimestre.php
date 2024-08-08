@@ -95,6 +95,13 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
         $rowCount = mysqli_num_rows($resultado); //Obtener las lineas obtenidas de la base de datos con el resultado obtenido despues del filtro
 
     
+    } else {
+
+
+        $sql = "SELECT * FROM Cuatrimestre WHERE Periodo = '$Periodo' and Ano = '$Ano'"; //Filtro con correo en la base de datos
+        $resultado = mysqli_query($conn, $sql);
+        $rowCount = mysqli_num_rows($resultado); //Obtener las lineas obtenidas de la base de datos con el resultado obtenido despues del filtro
+
     }
     
 
