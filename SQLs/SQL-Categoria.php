@@ -157,7 +157,7 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
                 } else {
 
 
-                    $_SESSION['resultado'] = "<div class='mensaje-sql-error'><h1> Se genero un error al realizar la acción,intente de nuevo</h1></div>";
+                    $_SESSION['resultado'] = "<div class='mensaje-sql-error'><h1> Se genero un error al realizar la acciÃ³n,intente de nuevo</h1></div>";
                     header("location: ../Paginas/AdministrarCategoria.php");
 
                 }
@@ -184,9 +184,8 @@ if (  (isset($_POST['submita'])) || (isset($_POST['submited'])) || (isset($_POST
 
         if ($accion == 'Editar') {
 
-            
-            $sql = " UPDATE `Categoria` SET `Nombre` = '$Nombre',`Horas_duracion_desde` = '$Horas_duracion_desde',`Horas_duracion_hasta` = '$Horas_duracion_hasta,`Estado` = '$Estado' WHERE `Categoria`.`Id_categoria` = $Id_Categoria";
 
+            $sql = "UPDATE `Categoria` SET `Nombre` = '$Nombre',`Horas_duracion_desde` = '$Horas_duracion_desde',`Horas_duracion_hasta` = '$Horas_duracion_hasta',`Estado` = '$Estado' WHERE `Categoria`.`Id_categoria` = '$Id_Categoria'";
             $stmt = mysqli_stmt_init($conn);
             $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
 
