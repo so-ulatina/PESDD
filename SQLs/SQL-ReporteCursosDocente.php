@@ -151,9 +151,12 @@ if (isset($_POST['submitf'])) {
 
     }
 
-    $sqlfind1 .= $sqlfind;
+    if ($sqlfind){
 
-    $_SESSION['sql1'] = $sqlfind1;
+        $sqlfind1 .= $sqlfind;
+        $_SESSION['sql1'] = $sqlfind1;
+    }
+
     header("location: ../Reportes/Reporte-CursosMatriculadosDocentes.php");
 
 }
