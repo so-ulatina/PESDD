@@ -23,7 +23,7 @@ function filterData(&$str)
 
 // Construir el nombre del archivo que se va a guardar
 
-$fileName = "Reporte_" . $_SESSION["Categoria"] . "_" . date('Y-m-d') . ".xls";
+$fileName = "Plantilla_" . $_SESSION["Categoria"] . "_" . date('Y-m-d') . ".xls";
 
 
 //Obtener la informacion de la base de datos
@@ -51,11 +51,11 @@ if ($query->num_rows > 0) {
         if (!$lineData){
             $Docente = $row[2] . " " . $row[3] . " " . $row[4];
             
-            $lineData = array("Hace contar que " . $Docente . " cédula " . $row[5] . " de la carrera(s) " . $row[1] . ", facultad " . $row[0] . " se ha capacitado en los siguientes cursos:" . "\n");
+            $lineData = array("Hace contar que " . $Docente . " cÃ©dula " . $row[5] . " de la carrera(s) " . $row[1] . ", facultad " . $row[0] . " se ha capacitado en los siguientes cursos:" . "\n");
 
             $excelData .= implode("\t", array_values($lineData)) . "\n";
 
-            $lineData = array("Certificado", "Periodo", "Año", "Codigo Curso", "Curso", "Modalidad", "Nota", "Cantidad Horas");
+            $lineData = array("Certificado", "Periodo", "AÃ±o", "Codigo Curso", "Curso", "Modalidad", "Nota", "Cantidad Horas");
 
             $excelData .= implode("\t", array_values($lineData)) . "\n";
 
