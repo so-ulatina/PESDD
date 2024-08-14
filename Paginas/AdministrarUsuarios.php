@@ -282,6 +282,7 @@ $_SESSION['Nombre'];
          2-Utilizar el estado tipo Activo o Inactivo solamente.<br />
          3-Por favor utilizar solamente las opciones que aparecen en la lista de opciones de Rol.<br />
          4-Por favor utilizar el formato de ejemplo@ulatina.net para el campo de Correo.<br />
+         5-Por favor utilizar una Contrase&ntildea de al menos 10 caracteres.<br />
              <div>
               <button onclick="agregarCerrar()" class="boton-cerrar"> Cerrar</button>  
              </div>
@@ -440,7 +441,8 @@ $_SESSION['Nombre'];
          3-Por favor utilizar solamente las opciones que aparecen en la lista de opciones de Rol.<br />
          4-Por favor utilizar el formato de ejemplo@ulatina.net para el campo de Correo.<br />
          5-Si se necesita cambiar la Contrase&ntildea por favor agregarla en el campo llamado Contrase&ntildea,si no se ocupa cambiar por favor dejar el campo en blanco.<br />
-             <div>
+         6-Por favor utilizar una Contrase&ntildea de al menos 10 caracteres.<br />
+            <div>
               <button onclick="editarCerrar()" class="boton-cerrar"> Cerrar</button>  
              </div>
 
