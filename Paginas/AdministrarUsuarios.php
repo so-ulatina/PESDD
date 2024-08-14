@@ -346,7 +346,7 @@ $_SESSION['Nombre'];
             <!-- Input para Password -->
             <div class="form-group">
                 <a class="sub">Contrase&ntildea:</a>
-                <input type="password" class="form-control" name="Password" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
+                <input type="password" class="form-control" name="Password" minlength="10" maxlength="255"  oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Este campo no puede estar vacio*')" required/>
             </div>
 
              <!-- Input para Correo -->
@@ -513,7 +513,7 @@ $_SESSION['Nombre'];
              <!-- Input para Password -->
             <div class="form-group">
                 <a class="sub">Contrase&ntildea:</a>
-                <input type="password" class="form-control" name="Passworde" id="Passworde" oninput="setCustomValidity('')" />
+                <input type="password" class="form-control"  minlength="10" maxlength="255" name="Passworde" id="Passworde" oninput="setCustomValidity('')" />
             </div>
 
 
